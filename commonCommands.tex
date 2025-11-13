@@ -1,0 +1,182 @@
+\documentclass [a4paper] {report}
+
+\usepackage [utf8] {inputenc} 
+\usepackage [italian] {babel}
+
+\usepackage {xcolor}
+\usepackage {geometry}
+
+\usepackage {amsmath}
+\usepackage {amssymb}
+\usepackage {amsfonts}
+
+\usepackage {mathrsfs}
+\usepackage {mathtools}
+\usepackage {faktor}
+
+\usepackage {stmaryrd}
+
+
+\geometry{hmargin={1.5cm,1cm}, vmargin={1.5cm, 1.5cm}}
+
+%Tabbing structure
+\newcommand {\ftab} {\hspace*{1cm}}
+\newcommand {\ntab} {\hspace{1cm}}
+\newcommand {\mtab} {\hspace{0.5cm}}
+\newcommand {\dtab} {\hspace{2cm}}
+\newcommand {\ptab} {\ftab\=\mtab\=\mtab\=\ntab\=\ntab\=\ntab\=\ntab\=\ntab\=\ntab\=\ntab\=\ntab\=\dtab\=\dtab\=\\}
+\newcommand {\stab} {\begin{tabbing}}
+\newcommand {\etab} {\end{tabbing}}
+\renewcommand {\t}[0] {\>}
+\newcommand {\n} [0] {\\}
+
+\newcommand {\tdx}  [0] {\t \t}
+
+%Custom labels
+\newcommand {\defg} 	[0] {\textbf{Definizione}: }
+\newcommand {\notg} 	[0] {\underline{Notatione}: }
+\newcommand {\teog} 	[0] {\textbf{Teorema}: }
+\newcommand {\lem} 	[0] {\textbf{Lemma}: }
+\newcommand {\cor} 		[0] {\tdx\textbf{Corollario}: }
+\newcommand {\prop} 	[0] {\underline{Proprietà}: }
+\newcommand {\dimg} 	[0] {\textit{Dimostrazione}: }
+
+
+%Definitions -> move to a separate file
+\newcommand{\stackHookR}{%
+  \mathrel{%
+    \vcenter{%
+      \offinterlineskip
+      \hbox{\makebox[1.5em][c]{$\scriptstyle\hookrightarrow$}}%
+      \kern-1.0ex
+      \hbox{\raisebox{0.2ex}{$\xhookrightarrow{\hspace{1em}}$}}%
+    }%
+  }%
+}
+
+%Capitol mathematical letters
+\newcommand {\N}	[0] {\mathbb{N}}	%Natural numbers
+\newcommand {\Z} 	[0] {\mathbb{Z}}		%Integers
+\newcommand {\Q} 	[0] {\mathbb{Q}} 	%Rational numbers
+\newcommand {\R} 	[0] {\mathbb{R}}   	%Real numbers
+\newcommand {\C} 	[0] {\mathbb{C}}   	%Complex numbers
+\renewcommand {\H}	[0] {\mathbb{H}} 	%Quaternions
+\newcommand {\K} 	[0] {\mathbb{K}}		%Generic field
+\newcommand {\F} 	[0] {\mathbb{F}}		%Generic finite field
+
+\newcommand {\Tsp}	[0] {\mathcal{D}}	%Spazio delle funzioni di test
+\newcommand {\dist}	[0] {\Tsp'}			%Spazio delle distribuzioni
+\newcommand {\cnt}	[0] {\mathcal{Z}}	%Center of an algebraic structure
+
+\newcommand {\prt}	[0] {\mathscr{P}}	%Power set 
+
+
+%Category names
+\newcommand {\gp}	[0] {Group}
+\newcommand {\rg}	[0] {Ring}
+\newcommand {\id}	[0] {Ideal}
+\newcommand {\st}	[0] {Set}
+\newcommand {\fd}	[0] {Field}
+\newcommand {\ag}	[0] {Alg}
+\newcommand {\vt}	[0] {Vect}
+\newcommand {\rp}	[0] {Rep}
+\newcommand {\irr}	[0] {Irr}
+\newcommand {\idc}	[0] {Indec}
+
+%Arrows
+\newcommand {\imp} 	[0] {\implies}							%Implication
+\newcommand {\ind} 		[0] {\stackrel{ind}{\imp}}					%Implication by induction
+
+\newcommand {\conv} 	[0] {\xrightarrow{\phantom{....}}}			%Basic convergence
+\newcommand {\convIn} 	[1] {\xrightarrow{#1}}					%Labeled convergence
+\newcommand {\convU} 	[0] {\convIn{\text{unif.}}}					%Uniform convergence
+\newcommand {\conW} 	[0] {\xrightharpoonup{\phantom{....}}}		%Basic weak convergence
+\newcommand {\conWIn}	[1] {\xrightharpoonup{#1}}				%Labeled weak convergence
+\newcommand {\conS}	[0] {\conWIn{\phantom{.}*\phantom{.}}}	%Basic weak* convergence
+\newcommand {\conSIn}	[1] {\conWIn{#1 - *}}					%Labeled weak* convergence
+
+\newcommand {\into}		[0] {\xhookrightarrow{\phantom{....}}}		%Basic simple immersion
+\newcommand {\intc}		[0] {\stackHookR}						%Basic compact immersion
+
+\newcommand {\morseq}	[1] {\stackrel{#1}{\longrightarrow}}		%...
+
+%Math custom operators
+\DeclareMathOperator*{\Sup} {sup}		%Supremun				
+\DeclareMathOperator*{\Inf} {inf}			%Infimun
+\DeclareMathOperator{\sgn}{sgn}			%Sign function
+
+\DeclareMathOperator{\im} {im}			%Image of a function
+\DeclareMathOperator{\supp} {supp}		%Support of a function
+
+\DeclareMathOperator*{\sech} {sech}		%Hyperbolic secant
+\DeclareMathOperator*{\csch} {csch}		%Hyperbolic cosecant
+
+\DeclareMathOperator{\opdiv} {div}		%Divergence
+\renewcommand {\div} [0] {\opdiv}
+
+\DeclareMathOperator{\mres}{\lfloor}		%Measure restriction
+
+
+%Math inline symbols
+\renewcommand {\(}		[0] {\left(}							%Adaptive left round bracket
+\renewcommand {\)}		[0] {\right)}							%Adaptive right round bracket
+\renewcommand {\[}		[0] {\left\llbracket}					%Adaptive left square bracket
+\renewcommand {\]}		[0] {\right\rrbracket}					%Adaptive right square bracket
+\newcommand {\la}		[0] {\left\langle}						%Adaptive left angle bracket
+\newcommand {\ra}		[0] {\right\rangle}					%Adaptive right angle bracket
+
+\newcommand {\dif} 		[0] {\setminus}						%Set difference
+\newcommand {\difsim} 	[0] {\triangle}						%Set simmetric difference
+
+\newcommand {\dirsum} 	[0] {\oplus}							%Direct sum
+\newcommand {\somort} 	[0] {\stackrel{\bot}{\dirsum}}			%Ortogonal direct sum
+\newcommand {\tnsr} 	[0] {\otimes}							%Tensor product
+
+\newcommand {\isom} 	[0] {\simeq}							%Isomorfismo
+\newcommand {\ore} 	[0] {\stackrel{.}{\simeq}}				%...
+
+\newcommand {\norm} 	[0] {\unlhd}							%Normal subgroup
+\newcommand {\pint} 	[1] {\mathring{#1}}					%Internal part of a set
+
+\newcommand {\derp} 	[0] {\partial}							%Partial derivative operator
+
+\newcommand {\paral}	[0] {\;\mathbin{\!/\mkern-5mu/\!}\;}	%Parallel symbol
+
+\newcommand {\tc}		[0] {\; : \;}							%s.t. symbol 
+\newcommand {\bmid}	[0] {\;\Big|\;}						%big s.t. symbol for set definitions
+
+\newcommand {\checkv}	[0] {\checkmark}						%v-chech symbol
+\newcommand {\1}		[0] {1}								%Characteristic function
+
+%Math displaystyle symbols
+\newcommand {\som} 	[0] {\displaystyle\sum}				%Summation
+\newcommand {\serl} 	[0] {\som_{n=-\infty}^{+\infty}}		%Series summation on Z
+\newcommand {\union} 	[0] {\displaystyle \bigcup}				%Union
+\newcommand {\inters} 	[0] {\displaystyle \bigcap}				%Intersection
+\newcommand {\undis}	[0] {\displaystyle \bigsqcup}			%Disjoint union
+\newcommand {\somdir}	[0] {\displaystyle \bigoplus}			%Direct sum
+
+\newcommand {\mx} 		[0] {\displaystyle \max}				%Maximum
+\newcommand {\mn} 	[0] {\displaystyle \min}				%Minimum
+\renewcommand {\sup} 	[0] {\displaystyle\Sup}				%Supremum
+\renewcommand {\inf} 	[0] {\displaystyle\Inf}					%Infimum
+
+\newcommand {\limf} 	[0] {\displaystyle\lim}					%Generic limit
+\newcommand {\lims} 	[0] {\displaystyle\lim_{n\to+\infty}}	%Sequence limit
+\newcommand {\limSup}	[0] {\displaystyle \limsup}				%Generic limsup
+\newcommand {\lms} 	[0] {\limSup_{n\to+\infty}}			%Sequence limsup
+\newcommand {\limInf}	[0] {\displaystyle \limInf}				%Generic liminf
+\newcommand {\lmi} 		[0] {\limInf_{n\to+\infty}}			%Sequence liminf
+
+\newcommand {\fraz} 	[0] {\displaystyle\frac}				%Fractions
+\newcommand {\intg} 	[0] {\displaystyle\int}					%Single integral
+\newcommand {\iintg} 	[0] {\displaystyle\iint}					%Double integral
+\newcommand {\iiintg} 	[0] {\displaystyle\iiint}				%Triple integral
+
+\newcommand {\comp} 	[0] {\displaystyle\complement}			%Set complementary symbol
+
+
+%Text modifiers
+
+\newcommand {\ud}		[0] {\underline}
+\newcommand {\ov}		[0] {\overline}
