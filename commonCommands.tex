@@ -1,5 +1,3 @@
-\documentclass [a4paper] {report}
-
 \usepackage [utf8] {inputenc} 
 \usepackage [italian] {babel}
 
@@ -15,6 +13,7 @@
 \usepackage {faktor}
 
 \usepackage {stmaryrd}
+\usepackage [colorlinks=true, allcolors=black] {hyperref}
 
 
 \geometry{hmargin={1.5cm,1cm}, vmargin={1.5cm, 1.5cm}}
@@ -70,6 +69,8 @@
 
 \newcommand {\prt}	[0] {\mathscr{P}}	%Power set 
 
+\renewcommand {\S} [0] {\mathbb{S}}		%Sphere
+
 
 %Category names
 \newcommand {\gp}	[0] {Group}
@@ -108,14 +109,24 @@
 \DeclareMathOperator{\im} {im}			%Image of a function
 \DeclareMathOperator{\supp} {supp}		%Support of a function
 
+\DeclareMathOperator*{\Id} {Id}			%Identity function
 \DeclareMathOperator*{\sech} {sech}		%Hyperbolic secant
 \DeclareMathOperator*{\csch} {csch}		%Hyperbolic cosecant
 
 \DeclareMathOperator{\opdiv} {div}		%Divergence
 \renewcommand {\div} [0] {\opdiv}
 
-\DeclareMathOperator{\mres}{\lfloor}		%Measure restriction
+\DeclareMathOperator {\mres} {\lfloor}		%Measure restriction
+\DeclareMathOperator {\D} {D}			%Distributional derivative
 
+\newcommand {\Dac} {\D^{\text{ac}}}		%BV derivative - absolute continum part
+\renewcommand {\DJ} {\D^{\text{J}}}		%BV derivative - jump part
+\newcommand {\DC} {\D^{\text{C}}}		%BV derivative - Cantor part
+
+\DeclareMathOperator*{\curl} {curl}			%curl of a vector field
+\DeclareMathOperator*{\lowerJ} {j}			%???
+\renewcommand {\j} [0] {\lowerJ}			
+\DeclareMathOperator {\J} {J}				%Jacobian
 
 %Math inline symbols
 \renewcommand {\(}		[0] {\left(}							%Adaptive left round bracket
