@@ -16,168 +16,315 @@
 
 \section{Prerequisiti}
 \subsection{Distribuzioni}
-\stab
-\ptab
-\notg Dato $\Omega \subseteq \R^N$ Lipschitz limitato\n
-	\tdx $\Tsp(\Omega) = C_c^{\infty}(\Omega)$\n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $\{u_n\} \subseteq \Tsp(\Omega)$ e $u \in \Tsp(\Omega)$\n
-	\tdx $u_n \convIn{\Tsp(\Omega)} u$ \t\t\t\t\t\t\t se \t $\begin{cases} \exists K \subset \Omega$ compatto $\tc \forall n \quad \supp u_n \subseteq K \\ \forall \alpha \quad D^\alpha u_n \convU D^\alpha u\end{cases}$\n
-\n
-\defg Dato $\Omega \subseteq \R^N$ Lipschitz limitato\n
-	\tdx $\dist(\Omega) = \{T : \Tsp(\Omega) \to \R \mid T$ lin e cont.$\}$ \t\t\t\t\t\t\t\t spazio delle distribuzioni su $\Omega$\n
-	\notg $\la T, u\ra = T(u)$\n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $\{T_n\} \subseteq \dist(\Omega)$ e $T \in \dist(\Omega)$\n
-	\tdx $T_n \conS T$ \t\t\t\t\t\t\t se \t $\forall u \in \Tsp(\Omega) \quad \la T_n, u\ra \conv \la T, u\ra$\n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $\{T_n\} \subseteq \dist(\Omega)$\n
-	\tdx $\forall u \in \Tsp(\Omega) \quad \sup_{n} \la T_n, u\ra \imp \exists \begin{cases} \{T_{n_k}\} \subseteq \{T_n\} \\ T \in \dist(\Omega)\end{cases} \tc T_{n_k} \conS T$\n
-\dimg ... \n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $f \in L^1_{loc}(\Omega)$\n
-	\tdx $T_f : \Tsp(\Omega) \to \R \tc \la T_f, u\ra = \intg_\Omega f(x)u(x)dx$\n
-	\prop $T_f \in \dist(\Omega)$\n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $T \in \dist(\Omega)$\n
-	\tdx $\bullet$ $\fraz{\derp T}{\derp x_j} : \Tsp(\Omega)  \to \R \tc \la \fraz{\derp T}{\derp x_j}, u\ra = \la T, \fraz{\derp u}{\derp x_j}\ra$ \t\t\t\t\t\t\t derivata $j$-esima di $T$\n
-	\tdx $\bullet$ $\nabla T$, $\div T$, $\dots$ \n
-	\prop $\forall j \quad \fraz{\derp T}{\derp x_j}$, $\nabla T$, $\div T$, $\dots$ $\in \dist(\Omega)$\n
-\n
-\teog Dato $\Omega \subseteq \R^N$ Lipschitz limitato\n
-	\tdx $\fraz{\derp}{\derp x_j} : \Tsp(\Omega) \to \Tsp(\Omega)$ lineare e continuo\n
-\dimg ... \n
-\n
-\notg Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $\rho \in \Tsp(\Omega)$\n
-	\tdx $\tilde \rho = \rho \circ \cdot_{-1}$\n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $T \in \dist(\Omega)$ e $\rho \in \Tsp(\Omega)$\n
-	\tdx $T * \rho : \Tsp(\Omega) \to \R \tc \la T * \rho, u \ra = \la T, \tilde\rho u \ra$\n
-	\prop $T * \rho \in \dist(\Omega)$\n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $T \in \dist(\Omega)$ e $\rho \in \Tsp(\Omega)$\n
-	\tdx $\forall j \quad \fraz{\derp}{\derp x_j}(T * \rho) = \fraz{\derp T}{\derp x_j} * rho = T * \fraz{\derp \rho}{\derp x_j}$\n
-\dimg ... \n
-\n
-\etab
+\notz{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$\Tsp(\Omega) = C_c^{\infty}(\Omega)$}
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $\{u_n\} \subseteq \Tsp(\Omega)$ e $u \in \Tsp(\Omega)$}
+	{$u_n \convIn{\Tsp(\Omega)} u$ \defif{$\begin{cases} \exists K \subset \Omega$ compatto $\tc \forall n \quad \supp u_n \subseteq K \\ \forall \alpha \quad D^\alpha u_n \convU D^\alpha u\end{cases}$}}
+
+
+\defc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$\dist(\Omega) = \{T : \Tsp(\Omega) \to \R \mid T$ lin e cont.$\}$ \defnm{spazio delle distribuzioni su $\Omega$}}
+\notz{}{$\la T, u\ra = T(u)$}
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $\{T_n\} \subseteq \dist(\Omega)$ e $T \in \dist(\Omega)$}
+	{$T_n \conS T$ \defif{$\forall u \in \Tsp(\Omega) \quad \la T_n, u\ra \conv \la T, u\ra$}}
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $\{T_n\} \subseteq \dist(\Omega)$}
+	{$\forall u \in \Tsp(\Omega) \quad \sup_{n} \la T_n, u\ra < +\infty \imp \exists \begin{cases} \{T_{n_k}\} \subseteq \{T_n\} \\ T \in \dist(\Omega)\end{cases} \tc T_{n_k} \conS T$}
+\edim
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $f \in L^1_{loc}(\Omega)$}
+	{$T_f : \Tsp(\Omega) \to \R \tc \la T_f, u\ra = \intg_\Omega f(x)u(x)dx$}
+	\prop{$T_f \in \dist(\Omega)$}
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $T \in \dist(\Omega)$}
+	{$\bullet$ $\fraz{\derp T}{\derp x_j} : \Tsp(\Omega)  \to \R \tc \la \fraz{\derp T}{\derp x_j}, u\ra = \la T, \fraz{\derp u}{\derp x_j}\ra$ \defnm{derivata $j$-esima di $T$}\n
+	 $\bullet$ $\nabla T$, $\div T$, $\dots$}
+	\prop{$\forall j \quad \fraz{\derp T}{\derp x_j}$, $\nabla T$, $\div T$, $\dots$ $\in \dist(\Omega)$}
+
+\teoc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$\fraz{\derp}{\derp x_j} : \Tsp(\Omega) \to \Tsp(\Omega)$ lineare e continuo}
+\edim
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $T \in \dist(\Omega)$ e $\rho \in \Tsp(\Omega)$}
+	{$\bullet$ $\tilde \rho = \rho \circ \cdot_{-1}$\n
+	 $\bullet$ $T * \rho : \Tsp(\Omega) \to \R \tc \la T * \rho, u \ra = \la T, \tilde\rho u \ra$}
+	\prop{$T * \rho \in \dist(\Omega)$}
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $T \in \dist(\Omega)$ e $\rho \in \Tsp(\Omega)$}
+	{$\forall j \quad \fraz{\derp}{\derp x_j}(T * \rho) = \fraz{\derp T}{\derp x_j} * \rho = T * \fraz{\derp \rho}{\derp x_j}$}
+\edim
+
 \subsection{Spazi di Sobolev $W^{1, p}$}
-\stab
-\ptab
-\defg Dati $\Omega \subseteq \R^N$ e $p \in [1, +\infty]$\n
-	\tdx $W^{1, p}(\Omega) = \left\{u \in L^p(\Omega) \bmid \exists g \in L^p\(\Omega, \R^N\) \tc \forall \varphi \in \Tsp(\Omega) \quad \intg_\Omega u \fraz{\derp \varphi}{\derp x_i} = -\intg_\Omega g_i\varphi\right\}$\n
-	\notg $g_i = \fraz{\derp u}{\derp x_i}$, $g = \nabla u$\n
-	\prop $\|\cdot\|_{W^{1, p}(\Omega)} =  \|\cdot\|_{L^p(\Omega)} + \|\nabla\cdot\|_{L^p(\Omega)}$ norma su $W^{1, p}(\Omega) \tc \(W^{1, p}(\Omega), \|\cdot\|_{W^{1, p}(\Omega)}\)$ spazio di Banach\n
-\n
+\defc{Dati $\Omega \subseteq \R^N$ e $p \in [1, +\infty]$}
+	{$W^{1, p}(\Omega) = \left\{u \in L^p(\Omega) \bmid \exists g \in L^p\(\Omega, \R^N\) \tc \forall \varphi \in \Tsp(\Omega) \quad \intg_\Omega u \fraz{\derp \varphi}{\derp x_i} = -\intg_\Omega g_i\varphi\right\}$}
+	\notz{}{$g_i = \fraz{\derp u}{\derp x_i}$, $g = \nabla u$}
+	\prop{$\|\cdot\|_{W^{1, p}(\Omega)} =  \|\cdot\|_{L^p(\Omega)} + \|\nabla\cdot\|_{L^p(\Omega)}$ norma su $W^{1, p}(\Omega) \tc \(W^{1, p}(\Omega), \|\cdot\|_{W^{1, p}(\Omega)}\)$ spazio di Banach}
 
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$, $\{u_n\} \subseteq W^{1, p}(\Omega)$ e $u \in W^{1, p}(\Omega)$\n
-	\tdx $u_n \convIn{W^{1, p}(\Omega)} u$ \t\t\t\t\t\t\t se \t $u_n, \nabla u_n \convIn{L^p(\Omega)} u, \nabla u$\n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $\{u_n\} \subseteq W^{1, p}(\Omega) \tc \exists C > 0 \tc \forall n \quad \|u_n\|_{W^{1, p}(\Omega)} \leq C$\n
-	\tdx $\bullet$ $p \in (1, +\infty) \imp \exists \{u_{n_k}\} \subseteq \{u_n\}, u \in W^{1, p}(\Omega) \tc u_{n_k}, \nabla u_{n_k} \conWIn{L^p(\Omega)} u, \nabla u$\n
-	\tdx $\bullet$ $p = +\infty \imp \exists \{u_{n_k}\} \subseteq \{u_n\}, u \in W^{1, p}(\Omega) \tc u_{n_k}, \nabla u_{n_k} \conS u, \nabla u$\n
-	\cor $p \in (1, +\infty) \imp u_{n_k} \convIn{L^p(\Omega)} u$\n
-\dimg ... \n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato\n
-	\tdx $\forall p \in [1, +\infty] \quad W^{1, p}(\Omega) = \overline{C^{\infty}\(\ov{\Omega}\)}^{\|\cdot\|_{W^{1, p}(\Omega)}}$\n
-\dimg ... \n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $p \in [1, +\infty]$\n
-	\tdx $\bullet$ $p \in [1, N) \imp \exists p* = \fraz{pN}{N-p} \tc \begin{cases} W^{1, p}(\Omega) \into L^{p*}(\Omega) \\ \forall q < p* \qquad W^{1, p}(\Omega) \intc L^{q}(\Omega) \end{cases}$\n
-	\tdx $\bullet$ $p = N \imp \forall q < +\infty \quad W^{1, p}(\Omega) \intc L^{q}(\Omega)$\n
-	\tdx $\bullet$ $p > N \imp \exists \alpha_p = \fraz{p-N}{p} \tc \begin{cases} W^{1, p}(\Omega) \into C^{0, \alpha_p}(\Omega) \\ \forall \beta < \alpha_p \qquad W^{1, p}(\Omega) \intc C^{0, \beta}(\Omega) \end{cases}$\n
-\dimg ... \n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $u \in W^{1, p}(\Omega)$\n
-	\tdx $\forall F \in C^1(\R) \cap Lip(\R) \quad F \circ u \in W^{1, p}(\Omega) \tc \nabla(F \circ u) = F'(u) \nabla u$\n
-\dimg ... \n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$\n
-	\tdx $\forall u, v \in W^{1, p}(\Omega) \cap L^{\infty}(\Omega) \quad uv \in W^{1, p}(\Omega) \cap L^{\infty}(\Omega) \tc \nabla(uv) = v\nabla u  + u\nabla v$\n
-\dimg ... \n
-\n
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$, $\{u_n\} \subseteq W^{1, p}(\Omega)$ e $u \in W^{1, p}(\Omega)$}
+	{$\bullet$ $u_n \convIn{W^{1, p}(\Omega)} u$ \defif{$u_n, \nabla u_n \convIn{L^p(\Omega)} u, \nabla u$}\n
+	$\bullet$ $u_n \conWIn{W^{1, p}(\Omega)} u$ \defif{$u_n, \nabla u_n \conWIn{L^p(\Omega)} u, \nabla u$}}
 
-\etab
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $\{u_n\} \subseteq W^{1, p}(\Omega) \tc \exists C > 0 \tc \forall n \quad \|u_n\|_{W^{1, p}(\Omega)} \leq C$}
+	{$\bullet$ $p \in (1, +\infty) \imp \exists \{u_{n_k}\} \subseteq \{u_n\}, u \in W^{1, p}(\Omega) \tc u_{n_k}, \nabla u_{n_k} \conWIn{L^p(\Omega)} u, \nabla u$\n
+	 $\bullet$ $p = +\infty \imp \exists \{u_{n_k}\} \subseteq \{u_n\}, u \in W^{1, p}(\Omega) \tc u_{n_k}, \nabla u_{n_k} \conS u, \nabla u$}
+\edim
+
+\corc{}{$p \in (1, +\infty) \imp u_{n_k} \convIn{L^p(\Omega)} u$}
+\edim
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$\forall p \in [1, +\infty] \quad W^{1, p}(\Omega) = \overline{C^{\infty}\(\ov{\Omega}\)}^{\|\cdot\|_{W^{1, p}(\Omega)}}$}
+\edim
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $p \in [1, +\infty]$}
+	{$\bullet$ $p \in [1, N) \imp \exists p^* = \fraz{pN}{N-p} \tc \begin{cases} W^{1, p}(\Omega) \into L^{p^*}(\Omega) \\ \forall q < p* \qquad W^{1, p}(\Omega) \intc L^{q}(\Omega) \end{cases}$\n
+	 $\bullet$ $p = N \imp \forall q < +\infty \quad W^{1, p}(\Omega) \intc L^{q}(\Omega)$\n
+	 $\bullet$ $p > N \imp \exists \alpha_p = \fraz{p-N}{p} \tc \begin{cases} W^{1, p}(\Omega) \into C^{0, \alpha_p}(\Omega) \\ \forall \beta < \alpha_p \qquad W^{1, p}(\Omega) \intc C^{0, \beta}(\Omega) \end{cases}$}
+\edim
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $u \in W^{1, p}(\Omega)$}
+	{$\forall F \in C^1(\R) \cap Lip(\R) \quad F \circ u \in W^{1, p}(\Omega) \tc \nabla(F \circ u) = F'(u) \nabla u$}
+\edim
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $p \in [1, +\infty]$}
+	{$\forall u, v \in W^{1, p}(\Omega) \cap L^{\infty}(\Omega) \quad uv \in W^{1, p}(\Omega) \cap L^{\infty}(\Omega) \tc \nabla(uv) = v\nabla u  + u\nabla v$}
+\edim
+
+\lemc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $\psi \in L^p_{loc}\(\Omega\)$}
+	{$\D \psi \in L^p(\Omega) \imp \psi \in W^{1, p}(\Omega)$}
+	\dimc{...to do...}
+
+\lemc[$L^p$ Poincarè][LpPoincarè]{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $F \in L^p\(\Omega, \R^N\)$}
+	{$\forall i, j \quad \fraz{\derp F_i}{\derp x_j}\ \eqIn{\dist(\Omega)} \fraz{\derp F_j}{\derp x_i} \iff \exists \varphi \in W^{1, p}(\Omega) \tc F = \nabla \varphi$}
+\dimc {...to do...}
+
 \subsection{Funzioni $BV$}
-\stab
-\ptab
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato\n
-	\tdx $BV(\Omega) = \left\{u \in L^1(\Omega) \bmid \exists \mu \in \mathcal{M}\(\Omega, \R^N\) \tc \forall \varphi \in \Tsp(\Omega) \quad \intg_\Omega u \fraz{\derp \varphi}{\derp x_i} = \intg_\Omega \varphi d\mu_i\right\}$\n
-	\notg $\mu = Du$\n
-	\prop $\|\cdot\|_{BV(\Omega)} =  \|\cdot\|_{L^(\Omega)} + \|D\cdot\|_{\mathcal{M}\(\Omega, \R^N\)}$ norma su $BV(\Omega) \tc \(BV(\Omega), \|\cdot\|_{BV(\Omega)}\)$ spazio di Banach\n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato\n
-	\tdx $\forall u \in BV(\Omega) \quad \exists \{u_n\}\subset C^{\infty}\(\ov{\Omega}\) \tc \begin{cases} u_n \convIn{L^1(\Omega)} u \qquad\qquad Du_n \conWIn{\mathcal{M}\(\Omega, \R^N\)} Du \\ \|Du_n\|_{\mathcal{M}\(\Omega, \R^N\)} \conv \|Du\|_{\mathcal{M}\(\Omega, \R^N\)}\end{cases}$\n
-\dimg ... \n
-\n
-\teog Dato $\Omega \subseteq \R^N$ Lipschitz limitato\n
-	\tdx $BV(\Omega)$ immerge come $W^{1, 1}(\Omega)$\n
-\dimg ... \n
-\n
-\defg $\Sigma \subseteq \R^N$ $k$-rettificabile \t\t\t\t\t\t\t se \t $\exists \begin{cases} \Sigma_0 \subseteq \R^N \tc \mathcal{H}^k(\Sigma_0) = 0 \\ \{M_i \subseteq \R^N\}$ $C^1$ $k$-sottovarietà$\end{cases} \tc \Sigma \subseteq \Sigma_0 \cup \union_{i} M_i$\n
-\n
-\teog Dato $\Sigma \subseteq \R^N$ $k$-rettificabile\n
-	\tdx $\bullet$ $\mathcal{H}^k$-q.o. $\quad \exists T_x\Sigma$\n
-	\tdx $\bullet$ $\mathcal{H}^k$-q.o. $\quad \exists \Sigma_{x, r} =\fraz{\Sigma - x}{r} \tc \forall R >0 \quad \mathcal{H}^k \mres_{\Sigma_{x, r}} \conWIn{\mathcal{M}(B^N_R)} \mathcal{H}^k \mres_{T_x\Sigma}$ \n
-\dimg ... \n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $f : \Omega \to \R$\n
-	\tdx $\bullet$ $x \in \Omega$ p.to di Lebesgue per $f$ \t\t\t\t\t\t se \t $\exists C \in \R \tc \limf_{r \to 0^+}\intg_{B_r(x)} |f(y) - C|dy = 0$\n
-	\tdx $\bullet$ $S_f = \{x \in \Omega \mid x$ non p.to di Lebesgue per $f\}$\n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in BV(\Omega)$\n
-	\tdx $\bullet$ $S_u$ $(N-1)$-rettificabile\n
-	\tdx $\bullet$ $\exists \begin{cases} \Dac u = \nabla u\mathcal{L}^N \\ \DJ u = (u^+ - u^-)\nu_u\mathcal{H}^{N-1}\mres_{Su} \\ \DC u \ll \mathcal{H}^{N-1} \end{cases} \tc \begin{cases}\D u = \Dac u + \DJ u + \DC u \\ \DJ u \perp \mathcal{L}^N \end{cases}$\n
-\dimg ... \n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $u \in BV(\Omega)$ e $F \in C^1(\R) \cap Lip(\R)$\n
-	\tdx $F \circ u \in BV(\Omega) \tc \begin{cases} \Dac(F\circ u) = F'(u)\Dac u \qquad\qquad \DC(F\circ u) = F'(u)D^{C}u \\ \DJ(F \circ u) = \(F(u^+) - F(u^-)\)\nu_u\mathcal{H}^{N-1}\mres_{Su} = \fraz{F(u^+) - F(u^-)}{u^+ - u^-}\DJ u\end{cases}$\n
-\dimg ... \n
-\n
-\etab
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$BV(\Omega) = \left\{u \in L^1(\Omega) \bmid \exists \mu \in \M\(\Omega, \R^N\) \tc \forall \varphi \in \Tsp(\Omega) \quad \intg_\Omega u \fraz{\derp \varphi}{\derp x_i} = \intg_\Omega \varphi d\mu_i\right\}$}
+	\notz{}{$\mu = Du$}
+	\prop{$\|\cdot\|_{BV(\Omega)} =  \|\cdot\|_{L^1(\Omega)} + \|D\cdot\|_{\mathcal{M}\(\Omega, \R^N\)}$ norma su $BV(\Omega) \tc \(BV(\Omega), \|\cdot\|_{BV(\Omega)}\)$ spazio di Banach}
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$\forall u \in BV(\Omega) \quad \exists \{u_n\}\subset C^{\infty}\(\ov{\Omega}\) \tc \begin{cases} u_n \convIn{L^1(\Omega)} u \qquad\qquad Du_n \conWIn{\mathcal{M}\(\Omega, \R^N\)} Du \\ \|Du_n\|_{\mathcal{M}\(\Omega, \R^N\)} \conv \|Du\|_{\mathcal{M}\(\Omega, \R^N\)}\end{cases}$}
+\edim
+
+\teoc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$BV(\Omega)$ immerge come $W^{1, 1}(\Omega)$}
+\edim
+
+\defc{}{$\Sigma \subseteq \R^N$ $k$-rettificabile \defif{$\exists \begin{cases} \Sigma_0 \subseteq \R^N \tc \mathcal{H}^k(\Sigma_0) = 0 \\ \{M_i \subseteq \R^N\}$ $C^1$ $k$-sottovarietà$\end{cases} \tc \Sigma \subseteq \Sigma_0 \cup \union_{i} M_i$}}
+
+\teoc{Dato $\Sigma \subseteq \R^N$ $k$-rettificabile}
+	{$\bullet$ $\mathcal{H}^k$-q.o. $\quad \exists T_x\Sigma$\n
+	 $\bullet$ $\mathcal{H}^k$-q.o. $\quad \exists \Sigma_{x, r} =\fraz{\Sigma - x}{r} \tc \forall R >0 \quad \mathcal{H}^k \mres_{\Sigma_{x, r}} \conWIn{\mathcal{M}(B^N_R)} \mathcal{H}^k \mres_{T_x\Sigma}$}
+\edim
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $f : \Omega \to \R$}
+	{$\bullet$ $x \in \Omega$ p.to di Lebesgue per $f$ \defif{$\exists C \in \R \tc \limf_{r \to 0^+}\intg_{B_r(x)} |f(y) - C|dy = 0$} \n
+	 $\bullet$ $S_f = \{x \in \Omega \mid x$ non p.to di Lebesgue per $f\}$}
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in BV(\Omega)$}
+	{$\bullet$ $S_u$ $(N-1)$-rettificabile \n
+	 $\bullet$ $\exists \begin{cases} \Dac u = \nabla u\mathcal{L}^N \\ \DJ u = (u^+ - u^-)\nu_u\mathcal{H}^{N-1}\mres_{Su} \\ \DC u \ll \mathcal{H}^{N-1} \end{cases} \tc \begin{cases}\D u = \Dac u + \DJ u + \DC u \\ \DJ u \perp \mathcal{L}^N \end{cases}$}
+\edim
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $u \in BV(\Omega)$ e $F \in C^1(\R) \cap Lip(\R)$}
+	{$F \circ u \in BV(\Omega) \tc \begin{cases} \Dac(F\circ u) = F'(u)\Dac u \qquad\qquad \DC(F\circ u) = F'(u)D^{C}u \\ \DJ(F \circ u) = \(F(u^+) - F(u^-)\)\nu_u\mathcal{H}^{N-1}\mres_{Su} = \fraz{F(u^+) - F(u^-)}{u^+ - u^-}\DJ u\end{cases}$}
+\edim
+
+\lemc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $\psi \in L^p_{loc}\(\Omega\)$}
+	{$\D \psi \in \M(\Omega) \imp \psi \in BV(\Omega)$}
+	\dimc{...to do...}
+
+\lemc[$BV$ Poincarè][BVPoincarè]{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $F \in \M\(\Omega, \R^N\)$}
+	{$\forall i, j \quad \fraz{\derp F_i}{\derp x_j}\ \eqIn{\dist(\Omega)} \fraz{\derp F_j}{\derp x_i} \iff \exists \varphi \in BV(\Omega) \tc F = \D \varphi$}
+\dimc {Analoga a \hyperref[lem:LpPoincarè]{$L^p$ Poincarè}.}
+
+\subsection{Funzioni $VMO$}
+\defc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$VMO(\Omega) = \left\{u \in L^1(\Omega) \bmid \fintg_{B_\varepsilon(x)}\fintg_{B_\varepsilon(x)}|u(y) - u(z)| dydz \convIn{\varepsilon \to 0 \text{, unif in} x} 0\right\}$}
+
+\lemc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $M$ varietà chiusa, $u \in VMO(\Omega, M)$ e $\{\rho_\varepsilon\}$ famiglia di mollificatori stardand}
+	{$d\(u * \rho_\varepsilon, M\) \convIn{\varepsilon \to 0 \text{, unif in } \Omega} 0$}
+	\tdim
 
 \section{Funzioni a valori nelle sfere}
-\stab
-\ptab
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $m \in \N$\n
-	\tdx $\bullet$ $W^{1, p}\(\Omega, \S^m\) = \left\{u \in W^{1, p}\(\Omega, \R^{m+1}\) \mid |u(x)| = 1 \quad \Omega\text{-q.o.}\right\}$\n
-	\tdx $\bullet$ $BV\(\Omega, \S^m\) = \left\{u \in BV\(\Omega, \R^{m+1}\) \mid |u(x)| = 1 \quad \Omega\text{-q.o.}\right\}$\n
-\n
-\etab
-\subsection{Lifting}
-\stab
-\ptab
-\prop Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $p \in [1, +\infty]$\n
-	\tdx $\forall \varphi \in u \in W^{1, p}\(\Omega, \R\) \quad e^{i\varphi} = \(\cos \varphi, \sin\varphi\) \in W^{1, p}\(\Omega, \S^1\)$\n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $u \in W^{1, p}\(\Omega, \S^1\)$\n
-	\tdx $\varphi \in W^{1, p}\(\Omega, \R\) \tc u = e^{i\varphi}$ \t\t\t\t\t\t lifting di $u$\n
-\n
-\teog Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso e $u : \Omega \to \S^1$\n
-	\tdx $u \in C^k\(\Omega, \S^1\) \imp \exists \varphi \in C^k(\Omega, \R) \tc \forall x \in \Omega \quad u(x) = e^{i\varphi(x)}$\n
-\dimg Dato $\pi(t) = e^{it}$ il rivestimento universale di $\S^1$, poichè $\Omega$ è semplicemente connesso 												\n
-	\t\tdx $\forall u \in C^0\(\Omega, \S^1\) \quad \exists \varphi \in C^0(\Omega, \R) \tc \forall x \in \Omega \quad u(x) = e^{i\varphi(x)}$. 				\n
-	\t\tdx Inoltre poichè $\pi$ è localmente invertibile con inversa $\C^{\infty}$ e $u$ è locamente non-suriettiva, 											\n
-	\t\tdx $\forall x_0 \in \Omega$ si ha $\varphi|_{B_r(x_0)} = \pi^{-1}_{u\(B_r(x_0)\)} \circ u_{B_r(x_0)}$ da cui $\varphi \in C^k(\Omega, \R)$.			\n
-\n
-\teog $\exists \Omega \subseteq \R^N$ Lipschitz limitato non semplicemente connesso $\tc \exists u \in C^\infty(\Omega, \S^1) \tc \nexists \varphi \in C^0(\Omega) \tc u = e^{i\varphi}$\n
-\dimg Presi $\Omega = B_2 \dif B_1 \subset \R^2$ e $u(x) =\frac{x}{|x|}$ per assurdo si avrebbe omotopia tra $\Id_{\S^1}$ e una costante.\n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in W^{1, p}\(\Omega, \R^2\)$\n
-	\tdx $\j u = u_1\nabla u_2 - u_2\nabla u_1$\n
-\prop $\forall u \in W^{1, 1}\(\Omega, \S^1\) \tc \exists \varphi \in W^{1, 1}\(\Omega, \S^1\)$ lifting di $u \qquad \j u = \nabla \varphi$\n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso e $V \in W^{1, p}\(\Omega, \R^N\)$\n
-	\tdx $\curl(V) \in \R^{N\times N}_{\text{skew-sym}} \tc \(\curl(V)\)_{ij} = \fraz{\derp V_i}{\derp x_j} - \fraz{\derp V_j}{\derp x_i}$\n
-\prop $\forall u \in W^{1, 1}\(\Omega, \R^2\) \tc \j u \in C^1(\Omega, \R^2) \quad \curl(\j u) = 0$\n
-\n
-\defg Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in W^{1, p}\(\Omega, \R^2\)$\n
-	\tdx $\J u = \fraz{1}{2}\curl(\j u) \in \dist\(\Omega, \R^{N\times N}_{\text{skew-sym}}\) $ \t\t\t\t\t\t\t\t\t Jacobiano distribuzionale\n
-\prop $u \in W^{1,2}(\Omega, \R^2) \quad \J u = \det(\nabla u)$\n
-\prop $N = 2 \imp \forall \Psi \in \Tsp(\Omega, \R) \quad \la \J u, \Psi\ra = -\frac{1}{2}\la \j u, \nabla^{\perp}\Psi\ra$\n
-\prop $N = 3 \imp \forall \Psi \in \Tsp(\Omega, \R^3) \quad \la \J u, \Psi\ra = \la \j u, \curl(\Psi)\ra$\n
-\n
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $m \in \N$}
+	{$\bullet$ $W^{1, p}\(\Omega, \S^m\) = \left\{u \in W^{1, p}\(\Omega, \R^{m+1}\) \bmid |u(x)| \eqIn{\Omega\text{-q.o.}} 1 \right\}$\n
+	 $\bullet$ $BV\(\Omega, \S^m\) = \left\{u \in BV\(\Omega, \R^{m+1}\) \bmid |u(x)| \eqIn{\Omega\text{-q.o.}} 1 \quad \right\}$}
 
-\etab
+\subsection{Lifting}
+\lemc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $p \in [1, +\infty]$}
+	{$\forall \varphi \in u \in W^{1, p}\(\Omega, \R\) \quad e^{i\varphi} = \(\cos \varphi, \sin\varphi\) \in W^{1, p}\(\Omega, \S^1\)$}
+\edim 
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $u \in W^{1, p}\(\Omega, \S^1\)$}
+	{$\varphi \in W^{1, p}\(\Omega, \R\) \tc u = e^{i\varphi}$ \defnm{lifting di $u$}}
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso e $u : \Omega \to \S^1$}
+	{$u \in C^k\(\Omega, \S^1\) \imp \exists \varphi \in C^k(\Omega, \R) \tc \forall x \in \Omega \quad u(x) = e^{i\varphi(x)}$}
+
+\dimc{Dato $\pi(t) = e^{it}$ il rivestimento universale di $\S^1$, poichè $\Omega$ è semplicemente connesso, si ha \n
+		$\forall u \in C^0\(\Omega, \S^1\) \quad \exists \varphi \in C^0(\Omega, \R) \tc u = \pi \circ \varphi.$ \n
+		Inoltre poichè $\pi$ è localmente invertibile con inversa $C^{\infty}$ e $u$ è locamente non-suriettiva si ha \n
+		$\forall x_0 \in \Omega \qquad \varphi|_{B_r(x_0)} = \pi^{-1}|_{u\(B_r(x_0)\)} \circ u|_{B_r(x_0)} \quad$ ovvero $\quad \varphi \in C^k(\Omega, \R).$}
+
+\teoc{$\exists \Omega \subseteq \R^N$ Lipschitz limitato non semplicemente connesso $\tc \exists u \in C^\infty(\Omega, \S^1) \tc \nexists \varphi \in C^0(\Omega) \tc u = e^{i\varphi}$}{}
+\dimc{Presi $\Omega = B_2 \dif B_1 \subset \R^2$ e $u(x) =\frac{x}{|x|}$ per assurdo si avrebbe omotopia tra $\Id_{\S^1}$ e una costante.}
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in W^{1, p}\(\Omega, \R^2\)$}
+	{$\j u = u_1\nabla u_2 - u_2\nabla u_1$}
+\prop{$\forall u \in W^{1, 1}\(\Omega, \S^1\) \tc \exists \varphi \in W^{1, 1}\(\Omega, \S^1\)$ lifting di $u \qquad \j u = \nabla \varphi$}
+
+\lemc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$\forall u \in W^{1,1}(\Omega, \S^1) \quad \j u = \nabla u$}
+	\tdim
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso e $V \in W^{1, p}\(\Omega, \R^N\)$}
+	{$\curl(V) \in \R^{N\times N}_{\text{skew-sym}} \tc \(\curl(V)\)_{ij} = \fraz{\derp V_i}{\derp x_j} - \fraz{\derp V_j}{\derp x_i}$}
+\prop{$\forall u \in W^{1, 1}\(\Omega, \R^2\) \tc \j u \in C^1(\Omega, \R^2) \quad \curl(\j u) = 0$}
+
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in W^{1, p}\(\Omega, \R^2\)$}
+	{$\J u = \fraz{1}{2}\curl(\j u) \in \dist\(\Omega, \R^{N\times N}_{\text{skew-sym}}\) $ \defnm{Jacobiano distribuzionale}}
+\prop{$u \in W^{1,2}(\Omega, \R^2) \quad \J u = \det(\nabla u)$}
+\prop{$N = 2 \imp \forall \Psi \in \Tsp(\Omega, \R) \quad \la \J u, \Psi\ra = -\frac{1}{2}\la \j u, \nabla^{\perp}\Psi\ra$}
+\prop{$N = 3 \imp \forall \Psi \in \Tsp(\Omega, \R^3) \quad \la \J u, \Psi\ra = \la \j u, \curl(\Psi)\ra$}
+
+\lemc[1][1]{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in W^{1, 1}\(\Omega, \S^1\)$}
+	{$\forall j \quad u \perp \fraz{\derp u}{\derp x_j}$}
+\dimc{$u \in W^{1, 1}\(\Omega, \S^1\) \imp u_1^2 + u_2^2 = 1 \imp \forall j \quad \fraz{\derp}{\derp x_j}\left[u_1^2 + u_2^2\right] = 2u_1\fraz{\derp u_1}{\derp x_j} + 2u_2\fraz{\derp u_2}{\derp x_j} = 0$\n
+	$\imp \la u, \fraz{\derp u}{\derp x_j}\ra_{\R^2} = 0 \imp u \perp \fraz{\derp u}{\derp x_j}$}
+
+\lemc[2][2]{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in W^{1, 1}\(\Omega, \S^1\)$}
+	{$\j u \equiv 0 \iff \nabla u \equiv 0 \iff u$ costante}
+\dimc{$\j u \equiv 0 \imp  u_1\fraz{\derp u_2}{\derp x_j} + u_2\fraz{\derp u_1}{\derp x_j} = 0 \imp u_1^2\fraz{\derp u_2}{\derp x_j} + u_1u_2\fraz{\derp u_1}{\derp x_j} = 0 \impref[lem]{1} u_1^2\fraz{\derp u_1}{\derp x_j} - u_2^2\fraz{\derp u_2}{\derp x_j} = 0$}
+
+\lemc[3][3]{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
+	{$\forall u, v \in W^{1, p}(\Omega, \S^1) \quad \j(u \cdot v) = \j u + \j v$}
+\dimc{$\forall u, v \in W^{1, p}(\Omega, \S^1)\quad$ si ha $\quad u \cdot v = (u_1v_1 - u_2v_2, u_1v_2 + u_2v_1)$ da cui 
+	\begin{align*} \j(u \cdot v) 	& =  \j(u_1v_1 - u_2v_2, u_1v_2 + u_2v_1) = (u_1v_1 - u_2v_2)\nabla(u_1v_2 + u_2v_1) - (u_1v_2 + u_2v_1)\nabla(u_1v_1 - u_2v_2) \\
+							& = \dots = (u_1\nabla u_2 - u_2\nabla u_1)(u_1^2 + u_2^2) + (v_1\nabla v_2 - v_2\nabla v_1)(v_1^2 + v_2^2) = \j u + \j v\end{align*}}
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $p \in [1, +\infty]$}
+	{$p \geq 2 \imp \forall u \in W^{1, p}(\Omega, \S^1) \quad \J u \equiv 0$}
+\dimc{$u \in W^{1, p}(\Omega, \S^1) \impref[lem]{1} \forall i, j \quad \fraz{\derp u}{\derp x_i} \perp u \perp \fraz{\derp u}{\derp x_j} \imp \fraz{\derp u}{\derp x_i} \paral \fraz{\derp u}{\derp x_j}$. \n
+	Poichè $p \geq 2$ vale $\(\J u\)_{ij} = \det \begin{pmatrix} \derp_iu_1 & \derp_iu_2 \\ \derp_ju_1 & \derp_ju_2\end{pmatrix} = 0 \imp \J u \equiv 0$}
+
+\teoc[$L^p$ lifting][lplifting]{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $u \in W^{1, p}(\Omega, \S^1)$}
+	{$\J u \eqIn{\dist(\Omega)} 0 \imp \exists \varphi \in W^{1, p}(\Omega, \R) \tc u = e^{i\varphi}$}
+	\dimc{.. to do...}
+	\corc{}{$\varphi$ unica a meno di una costante in $2\pi\Z$}
+	\dimc{... to do ...}
+
+\teoc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso, $p \in [1, +\infty]$ e $u : \Omega \to \S^1$}
+	{$u \in W^{1, 1}(\Omega, \S^1) \cap C^0(\Omega, \S^1) \imp \J u = 0$}
+	\edim 
+
+\teoc[$BV$ lifting][bvlifting]{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in BV(\Omega, \S^1)$}
+	{$\exists \varphi \in BV(\Omega, \R) \tc \begin{cases} u = e^{i\varphi} \\ \|\D \varphi\|_{\M(\Omega)} \leq 2 \|\D u\|_{\M(\Omega)}\end{cases}$}
+	\dimc{... to do ...}
+
+\subsection{Vortex map}
+\defc{$\hat u : \begin{matrix} \R^2 \dif \{0\} & \to & \S^1 \\ x & \mapsto & \frac{x}{|x|}\end{matrix}$ \defnm{vortex map}}{}
+
+\teoc{$\hat u \in W^{1, p}\(B_1, \S^1\) \iff p \in [1, 2)$}{}
+	\dimc{... to do ...}
+	\corc{}{$\J u = \pi \delta_0$}
+	\dimc{... to do ...}
+
+\subsection{Norme e problemi variazionali legati a $\J u$}
+\defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso e $u \in W^{1, 1}(\Omega, \S^1)$}
+	{$\bullet$ $R_p(u) = \min\left\{\lmi \intg_\Omega |\nabla u_n|^p \bmid \{u_n\}\subseteq C^{\infty}\(\ov{\Omega}, \S^1\) \tc u_n \convIn{q.o.} u\right\}$ \n
+	$\bullet$ $L(u) = \min\left\{\|\D \varphi\|_{\M(\Omega)} \mid \varphi \in BV(\Omega) \tc u = e^{i\varphi}\right\}$\n
+	$\bullet$ $L^{\J }(u) = \inf\left\{\|\DJ \varphi\|_{\M(\Omega)} \mid \varphi \in BV(\Omega) \tc u = e^{i\varphi}\right\}$\n
+	$\bullet$ $d_\nabla(\j u) = \inf\left\{\|\j u - \nabla \varphi\|_{L^1(\Omega)} \mid \varphi \in W^{1, 1}(\Omega)\right\} = \min\left\{\|\j u - \D \varphi\|_{\M(\Omega)} \mid \varphi \in BV(\Omega)\right\}$\n
+	$\bullet$ $E_p(\J u) = \inf\left\{\intg_\Omega |\nabla v|^p \bmid v \in W^{1, p}(\Omega) \tc \J v = \J u\right\}$ \n
+	$\bullet$ $E_\M(\J u) = \min\left\{\|\mu\|_{\M(\Omega)} \mid \mu \in \M\(\Omega, \R^N\) \tc  \frac{1}{2}\curl \mu = \J u\right\}$ \n
+	$\bullet$ $\|\J u\|_* = \sup\left\{\la \J u, \psi\ra \mid \psi \in C^\infty_c\(\Omega, \R^{N\times N}_{\text{skew-sym}}\) \tc \|\curl{}^* \psi\|_{L^{\infty}(\Omega)}= 1\right\}$}
+
+\prpc {$d_\nabla(\j u) = E_1(\j u)$}
+	\tdim
+
+\prpc {$E_\M(\J u) = d_\nabla(\j u)$}
+	\tdim
+
+\prpc {$\|\J u\|_* = \frac{1}{2}d_\nabla(\j u)$}
+	\tdim
+
+\prpc {Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
+	{$\bullet$ $\forall u, v \in W^{1, 1}(\Omega, \S^1) \quad \|\J u - \J v\|_* \leq \|\nabla u - \nabla v\|_{L^1(\Omega)}$ \n
+	$\bullet$ $\forall p >1 \quad \forall u, v \in W^{1, p}(\Omega, \S^1) \quad \|\J u - \J v\|_* \leq \frac{1}{2}\|u - v\|_{L^{p'}(\Omega)}\(\|\nabla u\|_{L^p(\Omega)} + \|\nabla v\|_{L^p(\Omega)}\)$}
+	\tdim
+
+\corc{.}{$\bullet$ $\J : (W^{1, 1}, \text{strong}) \to (\dist, \|\cdot\|_*)$ \qquad continuo \n
+		$\bullet$ $\forall p >1 \quad \J : (W^{1, p}, \text{weak}) \to (\dist, \|\cdot\|_*)$ \qquad continuo}
+	\edim
+
+\prpc {$L(u) = R_1(\j u)$}
+	\tdim
+
+\prpc {$\forall p > 1 \quad R_p(u) = \begin{cases} \|\nabla u\|^p_{L^p(\Omega)} &\text{se } \J u = 0 \\ +\infty &\text{se } \J u \not= 0 \end{cases}$}
+	\tdim
+
+\lemc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso, $u \in W^{1, 1}(\Omega, \S^1)$ e $\varphi \in BV(\Omega) \tc u = e^{i\varphi}$}
+	{$\D \varphi - \j u \perp \j u$}
+	\tdim
+	\corc{$|\D \varphi| = |\D \varphi - \j u| + |\nabla u|$}
+	\edim
+ 
+\teoc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
+	{$\forall u \in W^{1, 1}(\Omega, \S^1) \qquad L(u) = \intg_\Omega |\nabla u| + d_\nabla(\j u)$}
+	\tdim 
+	\corc{$\forall \varphi \in BV(\Omega)$ lifting di $u \qquad \begin{cases} \DC \varphi = 0 \\ \varphi^+ - \varphi^- \in 2\pi\Z\end{cases}$}{}
+	\edim
+	\corc{$L^{\J}(u) \geq d_\nabla(u)$}{}
+	\tdim
+
+\subsection{Approssimazioni con mappe (più) lisce}
+\prpc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
+	{$\forall p > 1 \qquad \ov{C^\infty\(\ov{\Omega}, \S^1\)}^{\|\cdot\|_{W^{1, p}(\Omega)}} = \left\{u \in W^{1, p}(\Omega, \S^1) \mid \J u = 0\right\}$}
+	\tdim 
+	\corc{$\forall p > 2 \quad \ov{C^\infty\(\ov{\Omega}, \S^1\)}^{\|\cdot\|_{W^{1, p}(\Omega)}} = W^{1, p}(\Omega, \S^1)$}{}
+	\edim
+
+\teoc[Schen-Uhlenbeck '83][]{Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso e $M$ varietà chiusa}
+	{$\forall p \geq N \quad C^\infty\(\ov{\Omega}, M\)$ denso in $W^{1, p}(\Omega, M)$}
+	\tdim
+
+\teoc[Bethuel-Zheng '88][]{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
+	{$\forall p < m \quad C^\infty\(\ov{\Omega}, \S^m\)$ denso in $W^{1, p}(\Omega, \S^m)$}
+	\tdim
+
+\defc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
+	{$\mathcal{R}^p = \mathcal{R}^p_m(\Omega) = \left\{u \in W^{1, p}(\Omega, \S^m) \bmid \exists \Sigma_u \subseteq \Omega \; (N-m-1) \text{ sottovarietà} \tc u \in C^\infty\(\ov{\Omega} \dif \Sigma_u, \S^m\)\right\}$}
+
+\teoc[Bethuek-Zheng '88, Bethuel '91][]{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
+	{$\forall p \in [m, m+1) \quad \mathcal{R}^p_m(\Omega)$ denso in $W^{1, p}(\Omega, \S^m)$}
+	\tdim
+
+\teoc[Bethuel '91][]{Dati $B \subset \R^N$ palla, $M$ varietà $m$-dimensionale e $p <N$ }
+	{$C^\infty\(B, M\)$ denso in $W^{1, p}(B, M) \iff \pi_{\floor{p}}(M) = 0$}
+	\edim
+
+\teoc[Bethuel '91][]{Date $N$ varietà $N$-dimensionale e $M$ varietà $m$-dimensionale}
+	{$\forall p \quad \left\{u \in W^{1, p}(N, M) \bmid \exists \Sigma_u \subseteq \Omega \; (N-\floor{p}-1) \text{ sottovarietà} \tc u \in C^\infty\(\ov{\Omega} \dif \Sigma_u, \S^m\)\right\}$ denso in $W^{1, p}(N, M)$}
+	\edim
+
+\teoc[Bethuel '91][]{Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso, $V$ spazio funzionale e $p \not\in \N$}
+	{$V$ debolmente denso in $W^{1, p}(\Omega, ?) \iff V$ fortemente denso in $W^{1, p}(\Omega, ?)$}
+	\edim
+
+\teoc[\_ ?][]{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
+	{$\forall m \quad C^{\infty}\(\Omega, \S^m\)$ debolmente denso in $W^{1, m}\(\Omega, \S^m\)$}
+	\edim
+
+\teoc[Bethuel '20][]{$C^{\infty}\(B^4, \S^2\)$ non debolemente denso in $W^{1, 3}\(B^4, \S^2\)$}
+	\edim
+	\corc {$\ov{C^{\infty}(B^4, \S^2)}^{\|\cdot\|_{W^{1, 3}\(B^4, \S^2\)}} \subset \ov{C^{\infty}\(B^4, \S^2\)}^{W^{1, 3}_{\text{weak}}\(B^4, \S^2\)} \subset W^{1, 3}(B^4, \S^2)$}{}
+	\edim 
+
+
 
 \end{document}
