@@ -6,7 +6,7 @@
 \author{Ivan De Biasi}
 \date{}
 
-\newcommand {\tempReg} {regolare}
+\newcommand {\tempReg} {regolare }
 
 \begin{document}
 
@@ -153,7 +153,7 @@
 	\tdim
 
 \subsection{Teoria geometrica della misura}
-\teoc[Formula di Coarea][]{Dati $\Omega \subseteq \R^N$ e $M$ varietà $\tc \dim(M) < N$}
+\teoc[Formula di coarea][]{Dati $\Omega \subseteq \R^N$ e $M$ varietà $\tc \dim(M) < N$}
 	{$\forall u \in C^\infty(\Omega, M) \quad \intg_\Omega |\nabla u| = \intg_M \mathcal{H}^{N-m}\(u^{-1}(y)\) d\mathcal{H}^{N-m}(y)$}
 	\edim
 
@@ -164,7 +164,7 @@
 
 \subsection{Lifting}
 \lemc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $p \in [1, +\infty]$}
-	{$\forall \varphi \in u \in W^{1, p}\(\Omega, \R\) \quad e^{i\varphi} = \(\cos \varphi, \sin\varphi\) \in W^{1, p}\(\Omega, \S^1\)$}
+	{$\forall \varphi \in W^{1, p}\(\Omega, \R\) \quad e^{i\varphi} = \(\cos \varphi, \sin\varphi\) \in W^{1, p}\(\Omega, \S^1\)$}
 \edim 
 
 \defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $u \in W^{1, p}\(\Omega, \S^1\)$}
@@ -309,7 +309,7 @@
 	\tdim
 
 \defc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
-	{$\mathcal{R}^p = \mathcal{R}^p_m(\Omega) = \left\{u \in W^{1, p}(\Omega, \S^m) \bmid \exists \Sigma_u \subseteq \Omega \; (N-m-1) \text{ sottovarietà} \tc u \in C^\infty\(\ov{\Omega} \dif \Sigma_u, \S^m\)\right\}$}
+	{$\mathcal{R}^p = \mathcal{R}^p_m(\Omega) = \left\{u \in W^{1, p}(\Omega, \S^m) \bmid \exists \Sigma_u \subseteq \ov{\Omega} \; (N-m-1) \text{ sottovarietà} \tc u \in C^\infty\(\ov{\Omega} \dif \Sigma_u, \S^m\)\right\}$}
 
 \teoc[Bethuek-Zheng '88, Bethuel '91][]{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
 	{$\forall p \in [m, m+1) \quad \mathcal{R}^p_m(\Omega)$ denso in $W^{1, p}(\Omega, \S^m)$}
@@ -408,7 +408,63 @@
 	$\bullet$ $\forall T \in \mathcal{E}_\Omega \quad \exists u \in W^{1, 1}(\Omega, \S^1) \tc \J u = \pi T$}
 	\tdim 
 
+\subsection{Significato geometrico di $\J u$ in $3D$}
+\defc {Dato $\Omega \subseteq \R^3$ \tempReg e $\Gamma \subset \Omega$ $1$-sottovarietà connessa}
+	{$\bullet$ $U_{\varepsilon}(\Gamma) \simeq \Gamma \times B_{\varepsilon}$ \defnm{intorno tubolare di $\Gamma$}\n
+	$\bullet$ $C_\Gamma(x, r) = C_r(x) = \{(x, y) \in U_{\varepsilon}(\Gamma) \mid |y| < r\}$}
 
+\teoc{Dati $\Omega \subseteq \R^3$ \tempReg e $u \in R^1_1(\Omega)$}
+	{$\Sigma_u = \Gamma = \union_{i = 1}^k \Gamma_i \imp \J u = \pi\som_{i=1}^k \deg\(u, C_{\Gamma_i}(x, r)\) \tau_{\Gamma_i} \mathcal{H}^1 \mres_{\Gamma_i}$}
+	\tdim
+
+\prpc {Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, p}(\Omega, \S^1)$}
+	{$\J u \not = 0 \imp \Omega \dif \supp \J u$ non semplicemente connesso}
+	\tdim ...
+
+\teoc {Dati $\Omega \subseteq \R^3$ \tempReg e $\Gamma = \Gamma_1 \cap \dots \cap \Gamma_k \subseteq \Omega$ $1$-sottovarietà}
+	{$\forall i \;\; \exists \tilde\Gamma_i \subseteq \R^3$ curva chiusa $\tc \Gamma_i = \tilde\Gamma_i \cap \Omega \imp \forall d \in \N^k \quad \exists u \in W^{1, 1}(\Omega, \S^1) \cap C^{\infty}\(\ov{\Omega} \dif \Gamma, \S^1\) \tc \forall i \;\; \deg\(u, \Gamma_i\) = d_i$}
+	\tdim
+\corc {$\J u = \pi\som_{i=1}^k d_i \tau_{\Gamma_i} \mathcal{H}^1 \mres_{\Gamma_i}$}
+	\tdim 
+
+\defc{Dati $\Omega \subseteq \R^3$ \tempReg e $\Gamma = d_1\Gamma_1 \cup \dots \cup d_k\Gamma_k \subseteq \Omega$ $1$-sottovarietà}
+	{$A(\Gamma) = A(\Gamma, d) = \inf\{d_1\mathcal{H}^2(\Sigma_1) + \dots + d_k\mathcal{H}^2(\Sigma_k) \mid \forall i \quad \Sigma_i \subseteq \Omega$ superficie lisca orientata $\tc \derp\Sigma_i = \Gamma_i\}$}
+
+\lemc{Date $\Sigma \subseteq \R^3$ superficie lisca orientata e $\mu = \nu_\Sigma \mathcal{H}^2\mres_\Sigma$}
+	{$\curl \mu = \tau_{\derp\Sigma}\mathcal{H}^1\mres_{\derp\Sigma}$}
+	\tdim 
+\corc {Dati $\Omega \subseteq \R^3$ \tempReg, $\Gamma \subseteq \Omega$ $1$-sottovarietà e $u \in W^{1, p}(\Omega, \S^1) \tc \J u = \pi \tau_\Gamma\mathcal{H}^1\mres_{\Gamma}$}
+	{$\bullet$ $2\pi A(\Gamma) \geq E_{\mathcal{M}}(\J u)$ \n
+	$\bullet$ $\|\J u\|_* \leq \pi A(\Gamma)$}
+	\tdim 
+
+\teoc {Dati $\Omega \subseteq \R^3$ \tempReg, $\Gamma \subseteq \Omega$ $1$-sottovarietà e $u \in W^{1, p}(\Omega, \S^1)$}
+	{$\J u = \pi \tau_\Gamma\mathcal{H}^1\mres_{\Gamma} \imp E_1(\J u) = 2\pi A(\Gamma)$}
+	\tdim
+
+\subsection{Mappe a valori in $\S^2$}
+\notz {Dato $\Omega \subseteq \R^3$}
+	{$\Omega$ \tempReg \qquad \text{se} \qquad $\Omega$ aperto limitato Lipschitz contrattibile}
+
+\defc {Dati $\Omega \subseteq \R^3$ \tempReg e $u : \Omega \to \R^3$}
+	{$\j u = u_1(\nabla u_2 \wedge \nabla u_3) - u_2(\nabla u_1 \wedge \nabla u_3) + u_3(\nabla u_1 \wedge \nabla u_2)$}
+	\prop {$u \in W^{1, 2}\(\Omega, \R^3\) \cap L^{\infty}(\Omega, \R^3) \imp j u \in L^1(\Omega, \R^3)$}
+
+\defc {Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}\(\Omega, \R^3\) \cap L^{\infty}\(\Omega, \R^3\) $}
+	{$\J u = \fraz{1}{3}\div(\j u)$}
+	\prop {$\J u \in \dist(\Omega, \R)$}
+
+\defc {Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}\(\Omega, \S^2\) $}
+	{$\bullet$ $d_\nabla(\j u) = \inf\left\{\|j u - \curl\varphi\|_{L^1(\Omega, \R^3)} \mid \varphi \in W^{1, 1}\(\Omega, \R^3\)\right\}$ \n
+	$\bullet$ $E_{\mathcal{M}}(\J u) = \min\left\{\|\mu\| \mid \frac{1}{3}\div \mu = \J u\right\}$ \n
+	$\bullet$ $E_2(\J u) = \inf \left\{\intg_\Omega |\nabla v|^2 \bmid v \in W^{1, 2}(\Omega, \S^2) \tc \J u = \J v\right\}$}
+
+\teoc {Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}\(\Omega, \S^2\)$}
+	{$d_\nabla(\j u) = E_{\mathcal{M}}(\J u) = 3\|\J u\|_*$}
+	\edim 
+
+\prpc {Dati $\Omega \subseteq \R^3$ \tempReg e $u : \Omega \to \S^2$}
+	{$u \in W^{1, 3}\(\Omega, \S^2\) \imp \J u = 0$}
 
  
 
