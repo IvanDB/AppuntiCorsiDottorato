@@ -6,6 +6,8 @@
 \author{Ivan De Biasi}
 \date{}
 
+\newcommand {\tempReg} {regolare}
+
 \begin{document}
 
 \maketitle
@@ -16,12 +18,12 @@
 
 \section{Prerequisiti}
 \subsection{Distribuzioni}
+
 \notz{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
 	{$\Tsp(\Omega) = C_c^{\infty}(\Omega)$}
 
 \defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $\{u_n\} \subseteq \Tsp(\Omega)$ e $u \in \Tsp(\Omega)$}
 	{$u_n \convIn{\Tsp(\Omega)} u$ \defif{$\begin{cases} \exists K \subset \Omega$ compatto $\tc \forall n \quad \supp u_n \subseteq K \\ \forall \alpha \quad D^\alpha u_n \convU D^\alpha u\end{cases}$}}
-
 
 \defc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato}
 	{$\dist(\Omega) = \{T : \Tsp(\Omega) \to \R \mid T$ lin e cont.$\}$ \defnm{spazio delle distribuzioni su $\Omega$}}
@@ -150,6 +152,11 @@
 	{$d\(u * \rho_\varepsilon, M\) \convIn{\varepsilon \to 0 \text{, unif in } \Omega} 0$}
 	\tdim
 
+\subsection{Teoria geometrica della misura}
+\teoc[Formula di Coarea][]{Dati $\Omega \subseteq \R^N$ e $M$ varietà $\tc \dim(M) < N$}
+	{$\forall u \in C^\infty(\Omega, M) \quad \intg_\Omega |\nabla u| = \intg_M \mathcal{H}^{N-m}\(u^{-1}(y)\) d\mathcal{H}^{N-m}(y)$}
+	\edim
+
 \section{Funzioni a valori nelle sfere}
 \defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato, $p \in [1, +\infty]$ e $m \in \N$}
 	{$\bullet$ $W^{1, p}\(\Omega, \S^m\) = \left\{u \in W^{1, p}\(\Omega, \R^{m+1}\) \bmid |u(x)| \eqIn{\Omega\text{-q.o.}} 1 \right\}$\n
@@ -185,6 +192,10 @@
 \defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso e $V \in W^{1, p}\(\Omega, \R^N\)$}
 	{$\curl(V) \in \R^{N\times N}_{\text{skew-sym}} \tc \(\curl(V)\)_{ij} = \fraz{\derp V_i}{\derp x_j} - \fraz{\derp V_j}{\derp x_i}$}
 \prop{$\forall u \in W^{1, 1}\(\Omega, \R^2\) \tc \j u \in C^1(\Omega, \R^2) \quad \curl(\j u) = 0$}
+
+\lemc{Dati $\Omega \subseteq \R^2$ Lipschitz limitato, $\gamma : [a, b] \to \Omega$ Lipschitz e $\mu = \nu_\gamma \mathcal{H}^1 \mres_\gamma$}
+	{$\curl(\mu) \eqIn{\dist(\Omega)} \delta_{\gamma(b)} - \delta_{\gamma(a)}$}
+	\tdim
 
 \defc{Dati $\Omega \subseteq \R^N$ Lipschitz limitato e $u \in W^{1, p}\(\Omega, \R^2\)$}
 	{$\J u = \fraz{1}{2}\curl(\j u) \in \dist\(\Omega, \R^{N\times N}_{\text{skew-sym}}\) $ \defnm{Jacobiano distribuzionale}}
@@ -273,7 +284,7 @@
 	\tdim
 	\corc{$|\D \varphi| = |\D \varphi - \j u| + |\nabla u|$}
 	\edim
- 
+
 \teoc{Dato $\Omega \subseteq \R^N$ Lipschitz limitato semplicemente connesso}
 	{$\forall u \in W^{1, 1}(\Omega, \S^1) \qquad L(u) = \intg_\Omega |\nabla u| + d_\nabla(\j u)$}
 	\tdim 
@@ -325,6 +336,80 @@
 	\corc {$\ov{C^{\infty}(B^4, \S^2)}^{\|\cdot\|_{W^{1, 3}\(B^4, \S^2\)}} \subset \ov{C^{\infty}\(B^4, \S^2\)}^{W^{1, 3}_{\text{weak}}\(B^4, \S^2\)} \subset W^{1, 3}(B^4, \S^2)$}{}
 	\edim 
 
+\subsection{Significato geometrico di $\J u$ in $2D$}
+\notz {Dato $\Omega \subseteq \R^N$}
+	{$\Omega$ \tempReg \qquad \text{se} \qquad $\Omega$ aperto limitato Lipschitz semplicemente connesso}
 
+\defc{Data $u \in C^0\(\S^1, \S^1\)$}
+	{$\bullet$ $\varphi_u : [0, 2\pi] \to \R \tc \forall t \in [0, 2\pi] \quad u\(e^{it}\) = e^{i\varphi(t)}$ \n
+	$\bullet$ $\deg(u) = \fraz{\varphi_u(2\pi) - \varphi_u(0)}{2\pi} \defnm{\text{grado di }u}$}
+
+\lemc {Data $u \in W^{1, 1}\(\S^1, \S^1\)$}
+	{$\deg(u) = \fraz{1}{2\pi} \intg_{\S^1} \(u_1 \fraz{\derp u_2}{\derp \theta} - u_2\fraz{\derp u_1}{\derp \theta}\) d\mathcal{H}^1(\theta)$}
+	\tdim
+
+\defc {Dati $\Omega \subseteq \R^2$ \tempReg, $\Gamma = \{a_1, \dots, a_n\} \subset \Omega$ e $u \in C^{\infty}\(\Omega \dif \Gamma, \S^1\) \cap W^{1, 1}(\Omega, \S^1)$}
+	{$d_i(u) = \limf_{r \to 0^+} \deg\(u|_{\derp B_r(a_i)}\)$}
+
+
+\teoc {Dati $\Omega \subseteq \R^2$ \tempReg, $\Gamma = \{a_1, \dots, a_n\} \subset \Omega$ e $u \in C^{\infty}\(\Omega \dif \Gamma, \S^1\) \cap W^{1, 1}(\Omega, \S^1)$}
+	{$\J u = \pi \som_i d_i(u)\delta_{a_i}$}
+	\tdim
+\corc {$\forall u \in W^{1, 1}(\Omega, \S^1) \quad \J u \in \ov{\left\{\som_{i\in I} d_i\delta_{x_i} \bmid \begin{matrix} I \subset \N$ finito $\\ \{d_i\} \subset \Z \quad \{x_i\} \subset \Omega \end{matrix}\right\}}^{\|\cdot\|_*}$}
+	\tdim
+
+
+\prpc {Data $u \in W^{1, 1}(B_1, \S^1)$}
+	{$\J u \eqIn{\dist(B_1 \dif \{0\})} 0 \imp \exists d = \limf_{r \to 0^+} \deg \(u|_{\derp B_r}\)\in \Z \tc \J u = \pi d \delta_0$}
+	\tdim
+
+\defc {Dati $\Omega \subseteq \R^2$ \tempReg, $\Gamma = \{a_1, \dots, a_n\} \subset \Omega$, $u \in C^{\infty}\(\Omega \dif \Gamma, \S^1\) \cap W^{1, 1}(\Omega, \S^1)$ e $d = \(d_1(u), \dots, d_n(u)\)$}
+	{$A(\Gamma, d) = \min\left\{\som_{i \in I} |P_i - N_i| \bmid \Big\{(P_i, N_i) \in \ov{\Omega} \tc \som_i \delta_{P_i} - \delta_{N_i} \eqIn{\dist(\Omega)} \som_j d_j(u) \delta_{a_j}\Big\}\right\}$}
+	\prop{$A(\Gamma, d) = \min\left\{\som_{i \in I} length(\gamma_i) \bmid \Big\{\gamma_i : [a_i, b_i] \to \R^2 \tc \som_i \delta_{\gamma_i(b_i)} - \delta_{\gamma_i(a_i)} \eqIn{\dist(\Omega)} \som_j d_j(u) \delta_{a_j}\Big\}\right\}$}
+
+\teoc {Dati $\Omega \subseteq \R^2$ \tempReg, $\Gamma = \{a_1, \dots, a_n\} \subset \Omega$, $u \in C^{\infty}\(\Omega \dif \Gamma, \S^1\) \cap W^{1, 1}(\Omega, \S^1)$ e $d = \(d_1(u), \dots, d_n(u)\)$}
+	{$\J u = \pi \som_i d_i(u)\delta_{a_i} \imp E_1(\J u) = 2\pi A(\Gamma, d)$}
+	\tdim
+
+\defc{Dati $\Omega \subseteq \R^2$ e $\mu \in \mathcal{M}(\Omega, \R^2)$}
+	{$\mu$ $1$-rettificabile \defnm{se $\quad$ $\exists K \subseteq \Omega$ $1$-rettificabile e $\mu = \nu_K\mathcal{H}^1 \mres_K$}}
+
+\teoc {Dati $\Omega \subseteq \R^2$ \tempReg, $\mu \in \mathcal{M}(\Omega)$ $1$-rettificabile}
+	{$\exists u \in W^{1, 1}(\Omega, \S^1) \tc \J u = \pi\curl\mu \imp \exists \varphi \in BV(\Omega) \tc \begin{cases} u = e^{i \varphi} &\qquad \Dac\varphi = \j u \\ \DJ\varphi = - 2\pi\mu &\qquad \DC\varphi = 0  \end{cases}$}
+	\tdim
+\corc{$\varphi$ unica a meno di $k \in 2\pi\Z$}
+	\edim
+
+\defc{Dati $\Omega \subseteq \R^2$ \tempReg e $u \in W^{1, 1}(\Omega, \S^1)$}
+	{$\bullet$ $\mathcal{R}_u = \{\mu\in \mathcal{M}(\Omega, \R^2)$ $1$-rettificabile $\mid \pi \curl \varphi = \J u\}$ \\
+	$\bullet$ $\mathcal{L}_u = \faktor{\{\varphi \in BV(\Omega) \mid \varphi \text{ lifitng di } u\}}{2\pi\Z}$}
+
+\teoc {Dato $\Omega \subseteq \R^2$ \tempReg}
+	{$\forall u \in W^{1, 1}(\Omega, \S^1) \quad \exists \iota : \mathcal{R}_u \to \mathcal{L}_u$ biiezione} 
+	\tdim 
+
+\defc {Dato $\Omega \subseteq \R^2$ \tempReg}
+	{$\mathcal{E}_\Omega = \left\{\som_{i \in \N} \delta_{P_i} - \delta_{N_i} \bmid \begin{matrix} P_i, N_i \in \ov{\Omega} \\ \som_{i\in \N} |P_i - N_i| < +\infty\end{matrix}\right\}$}
+	\prop {$\mathcal{E}_\Omega = \derp\{\text{correnti $1$-rettificabili in $\Omega$}\} = \{\text{$0$-correnti piatte in $\Omega$}\}$}
+
+\defc {Dati $\Omega \subseteq \R^2$ \tempReg e $T \in \mathcal{E}_\Omega$}
+	{$A_\Omega(T) = \inf\left\{\som_{i\in \N} |P_i - N_i| \bmid \{P_i, N_i\} \subseteq \ov{\Omega}^2 \tc T = \som_{i \in \N} \delta_{P_i} - \delta_{N_i}\right\}$} 
+
+\lemc {Dato $\Omega \subseteq \R^2$ \tempReg}
+	{$\forall T \in \mathcal{E}_\Omega \quad \|T\|_* = A_\Omega(T)$}
+	\tdim
+
+\prpc {Dato $\Omega \subseteq \R^2$ \tempReg}
+	{$\ov{\mathcal{E}_\Omega}^{\|\cdot\|_*} =  \mathcal{E}_\Omega$}
+	\tdim
+
+\teoc {Dato $\Omega \subseteq \R^2$ \tempReg}
+	{$\bullet$ $\forall u \in W^{1, 1}(\Omega, \S^1) \quad \J u \in \mathcal{E}_\Omega$ \\ 
+	$\bullet$ $\forall T \in \mathcal{E}_\Omega \quad \exists u \in W^{1, 1}(\Omega, \S^1) \tc \J u = \pi T$}
+	\tdim 
+
+
+
+ 
 
 \end{document}
