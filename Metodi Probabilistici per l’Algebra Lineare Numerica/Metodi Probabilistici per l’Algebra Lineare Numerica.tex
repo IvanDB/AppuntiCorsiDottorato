@@ -15,7 +15,114 @@
 \tableofcontents
 \newpage
 
+\section{Fondamenti di probabilità}
+\defc[Funzione generatrice dei momenti]{Data $X$ v.a.}
+	{$M_X(\theta) = \expv[\exp(\theta X)]$}
 
+\subsection{Disuguaglianze}
+\teoc[Jensen]{Data $X$ v.a. e $\varphi : \R \to \R$ convessa}
+	{$\varphi(\expv[X]) \leq \expv[\varphi(X)]$}
+	\edim
+
+\teoc[Markov]{Data $X \geq 0$ v.a. $\tc \exists \expv[X]$}
+	{$\forall \alpha > 0 \quad \P(X \geq \alpha) \leq \fraz{\expv[X]}{\alpha}$}
+	\edim
+	
+\teoc[Chebyshev]{Data $X$ v.a. $\tc \exists \expv[X], \Var(X)$}
+	{$\forall \alpha > 0 \quad \P(|X - \expv[X]| \geq \alpha) \leq \fraz{\Var[X]}{\alpha^2}$}
+	\edim
+
+\teoc[Chernoff]{Data $X$ v.a.}
+	{$\forall \alpha \quad \forall \theta > 0 \quad \P(X \geq \alpha) \leq \fraz{\expv[\exp(\theta X)]}{\exp(\theta\alpha)}$}
+	\edim
+	
+\subsection{Proprietà di distribuzioni notevoli}
+
+\teoc{Data $X \sim \gaus\(0, I_n\)$}
+	{$\forall U \in \R^{n\times n}$ ortogonale $\quad UX \sim \gaus\(0, I_n\)$}
+	\edim
+
+\lemc{Data $\alpha \sim \gaus\(0, 1\)$}
+	{$\forall c > 0 \qquad \expv\left[\fraz{c}{\alpha^2 + c}\right] \leq \sqrt{\fraz{\pi c}{2}}$}
+	\tdim
+
+\prpc{$X \sim \gaus(0, 1) \imp M_X(\theta) = e^{\frac{\theta^2}{2}}$}
+	\edim
+
+\prpc{$X \sim Chi-quadro(1) \imp M_X(\theta) = \fraz{1}{\sqrt{1 - 2\theta}}$}
+	\edim
+
+
+\subsection{Variabili sub-gaussiane e sub-Gamma}
+
+\defc{Data $X$ v.a e $c > 0$}
+	{$X$ sub-gaussiana con parametro $c$ $\quad$ se $\quad$ $\forall \theta\in\R \quad \expv[\exp(\theta (X - \expv[X])] \leq \exp\(\fraz{c\theta^2}{2}\)$}
+
+\teoc {Data $X$ v.a sub-gaussiana con parametro $c > 0$}
+	{$\forall t > 0 \quad \P(X - \expv[X] \geq t) \leq \exp\(-\fraz{t^2}{2c^2}\)$}
+	\tdim 
+	\corc{$\forall t > 0 \quad \P(|X - \expv[X]| \geq t) \leq 2\exp\(-\fraz{t^2}{2c^2}\)$}
+	\edim 
+
+\teoc [Disuguaglianza di Hoeffding]{Date $X_1, \dots, X_N$ v.a $\tc \forall i \quad X_i$ sub-gaussiana con parametro $c_i > 0$}
+	{$\forall t > 0 \quad \P\(\left|\som_i (X_i - \expv[X_i])\right| \geq t\) \leq 2\exp\(-\fraz{t^2}{2(c_1^2 + \dots + c_N^2)}\)$}
+	\tdim
+	\corc{$Y = X_1 + \dots + X_N$ sub-gaussiana con parametro $c =\sqrt{c_1^2 + \dots + c_N^2}$}
+	\edim
+
+\lemc{Data $X$ v.a $\tc \expv[X] = 0$}
+	{$X$ $L$-limitata $\imp X$ sub-gaussiana con parametro $L$}
+	\tdim 
+	
+\defc{Data $X$ v.a e $\nu, c > 0$}
+	{$X$ sub-gamma con parametri $\nu, c$ $\quad$ se $\quad$ $ \forall \theta\in\(0,\frac{1}{c}\)  \quad \expv[\exp(\theta (X - \expv[X])] \leq \exp\(\fraz{\theta^2\nu}{2(1-c\theta)}\)$}
+	
+\lemc{Data $X$ v.a $\tc \expv[X] = 0$}
+	{$X, -X$ sub-gamma con parametri $\nu, c \imp \forall t>0 \quad \P(|X| \geq t) \leq 2\exp\(-\fraz{t^2}{2(\nu+ct)}\)$}
+	\tdim
+
+\lemc{Date $A \in \R^{n\times n}$ simmetrica, $X \sim \gaus(0, I_n)$ e $Y = X^\trasp A X - \tr(A)$}
+	{$Y, -Y$ sub-gamma con parametri $(\nu, c) = \(2\|A\|_F, 2\|A\|_2\)$}
+	\tdim
+	\corc {Date $A \in \R^{n\times n}$ simmetrica e $X \sim \gaus(0, I_n)$}
+	{$\forall \varepsilon > 0 \quad \P\(|X^\trasp A X - \tr(A)| \geq \varepsilon\) \leq 2\exp\(-\fraz{\varepsilon^2}{4\|A\|_F + 4\varepsilon\|A\|_2}\)$}
+	\edim 
+
+\section{Risultati vari}
+\subsection{Metodo delle potenze}
+\defc{Data $A \in \R^{n\times n}$ simmetrica semidefinita positiva $\tc Spec(A) = \{\lambda_1 > \lambda_2 \geq \dots \geq \lambda_n\}$}
+	{$MP_A(y_0) = \left\{(y_k, \xi_k) \bmid \begin{matrix} y_k = A y_{k-1} \\ \xi_k = \fraz{y_k^\trasp A y_k}{y_k^\trasp y_k}\end{matrix}\right\}$}
+	\prop{$\forall y_0 \in \R^n \tc y_0 \not\perp u_{\lambda_1} \quad \limf_{k\to +\infty} (y_k, \xi_k) = \(u_{\lambda_1}, \lambda_1\)$}
+
+\teoc {Dati $A \in \R^{n\times n}$ simmetrica semidefinita positiva $\tc Spec(A) = \{\lambda_1 > \lambda_2 \geq \dots \geq \lambda_n\}$ e $MP_A(y_0) = \{(y_k, \xi_k)\}$ metodo delle potenze}
+	{$y_0 \sim \gaus(0, I_n) \qquad \expv\left[\fraz{|\lambda_1 - \xi_k|}{\lambda_1}\right] \leq \sqrt{\fraz{(n-1)\pi}{2}}\(\fraz{\lambda_2}{\lambda_1}\)^k$}
+	\tdim
+	
+	
+
+\section{Stime per la traccia di matrici}
+
+
+\subsection{Stimatore di Girard - Hutchinson}
+\teoc{Dati $A \in \R^{n \times n}$ simmetrica e $X \in \R^n$ v.a.}
+	{$\expv[XX^\trasp ] = I_n \imp \expv[X^\trasp A X] = \tr(A)$}
+	\dimc{$\expv[X^\trasp A X] =\expv[\tr(X^\trasp A X)] = \expv[\tr(AXX^\trasp)] = \tr(A\expv[XX^\trasp]) = \tr(A)$}
+	
+\defc[Stimatore di Girard - Hutchinson]{Dati $A \in \R^{n \times n}$ simmetrica e $X^{(1)}, \dots, X^{(N)} \in \R^n$ v.a. $\tc \forall i \quad \expv\left[X^{(i)} {X^{(i)}}^\trasp\right] = I_n$}
+	{$\tr_N(A) = \fraz{1}{N} \som_i  {X^{(1)}}^\trasp A X^{(i)}$}
+	\prop{$\expv[\tr_N(A)] = \tr(A)$}
+
+\teoc{Dati $A \in \R^{n \times n}$ simmetrica e $X \sim \gaus(0, I_n)$}
+	{$\Var\(X^\trasp A X\) = 2\|A\|_F$}
+	\tdim
+	\corc{$\forall \varepsilon, \delta > 0 \quad \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq \delta \iff N \geq 2\|A\|_F \fraz{1}{\varepsilon^2}\fraz{1}{\delta}$}
+	\edim
+
+\teoc{Dati $A \in \R^{n \times n}$ simmetrica e $X \sim Rademacher(n)$}
+	{$\Var\(X^\trasp A X\) = 2\|A - diag(A)\|_F$}
+	\tdim
+	\corc{$\forall \varepsilon, \delta > 0 \quad \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq \delta \iff N \geq 8n^2\|A\|_F \fraz{1}{\varepsilon^2}\log\(\fraz{2}{\delta}\)$}
+	\edim
 
 
 
