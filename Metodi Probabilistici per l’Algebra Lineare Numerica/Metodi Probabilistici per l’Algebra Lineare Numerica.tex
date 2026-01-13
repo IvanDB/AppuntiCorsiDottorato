@@ -19,21 +19,35 @@
 \defc[Funzione generatrice dei momenti]{Data $X$ v.a.}
 	{$M_X(\theta) = \expv[\exp(\theta X)]$}
 
+
+\defc[Funzione generatrice dei cumulanti]{Data $X$ v.a.}
+	{$C_X(\theta) = \log M_X(\theta)$}
+
+\prpc {Date $X_1, \dots, X_n$ v.a. indipendenti}
+	{$C_{X_1 + \dots + X_n}(\theta) = C_{X_1}(\theta) + \dots + C_{X_n}(\theta)$} 
+	\tdim
+
 \subsection{Disuguaglianze}
 \teoc[Jensen]{Data $X$ v.a. e $\varphi : \R \to \R$ convessa}
 	{$\varphi(\expv[X]) \leq \expv[\varphi(X)]$}
 	\edim
 
-\teoc[Markov]{Data $X \geq 0$ v.a. $\tc \exists \expv[X]$}
+\teoc[Markov]{Data $X \geq 0$ v.a. $\tc \expv[X] < +\infty$}
 	{$\forall \alpha > 0 \quad \P(X \geq \alpha) \leq \fraz{\expv[X]}{\alpha}$}
 	\edim
 	
-\teoc[Chebyshev]{Data $X$ v.a. $\tc \exists \expv[X], \Var(X)$}
+\teoc[Chebyshev]{Data $X$ v.a. $\tc \expv[X], \Var(X) < +\infty$}
 	{$\forall \alpha > 0 \quad \P(|X - \expv[X]| \geq \alpha) \leq \fraz{\Var[X]}{\alpha^2}$}
 	\edim
 
 \teoc[Chernoff]{Data $X$ v.a.}
 	{$\forall \alpha \quad \forall \theta > 0 \quad \P(X \geq \alpha) \leq \fraz{\expv[\exp(\theta X)]}{\exp(\theta\alpha)}$}
+	\edim
+
+\notz{$\forall L > 0 \quad g_L(\theta) = \fraz{\frac{\theta^2}{2}}{1 - \frac{L\theta}{3}}$}{}
+
+\teoc[Bernstein]{Data $X$ v.a. $\tc \expv[X] = 0$}
+	{$X \in [-L, L] \imp \forall \theta \in \(0, \frac{3}{L}\right] \quad C_X(\theta) \leq g_L(\theta)\expv[X^2]$}
 	\edim
 	
 \subsection{Proprietà di distribuzioni notevoli}
@@ -57,36 +71,31 @@
 
 \defc{Data $X$ v.a e $c > 0$}
 	{$X$ sub-gaussiana con parametro $c$ $\quad$ se $\quad$ $\forall \theta\in\R \quad \expv[\exp(\theta (X - \expv[X])] \leq \exp\(\fraz{c\theta^2}{2}\)$}
+\notz{$X \sim \subGauss(c) \iff X$ sub-gaussiana con parametro $c$}{}
 
-\teoc {Data $X$ v.a sub-gaussiana con parametro $c > 0$}
+\teoc {Data $X \sim \subGauss(c)$}
 	{$\forall t > 0 \quad \P(X - \expv[X] \geq t) \leq \exp\(-\fraz{t^2}{2c^2}\)$}
 	\tdim 
 	\corc{$\forall t > 0 \quad \P(|X - \expv[X]| \geq t) \leq 2\exp\(-\fraz{t^2}{2c^2}\)$}
 	\edim 
 
-\teoc [Disuguaglianza di Hoeffding]{Date $X_1, \dots, X_N$ v.a $\tc \forall i \quad X_i$ sub-gaussiana con parametro $c_i > 0$}
+\teoc [Disuguaglianza di Hoeffding]{Date $X_1, \dots, X_N$ v.a $\tc \forall i \quad X_i \sim \subGauss(c_i)$}
 	{$\forall t > 0 \quad \P\(\left|\som_i (X_i - \expv[X_i])\right| \geq t\) \leq 2\exp\(-\fraz{t^2}{2(c_1^2 + \dots + c_N^2)}\)$}
 	\tdim
-	\corc{$Y = X_1 + \dots + X_N$ sub-gaussiana con parametro $c =\sqrt{c_1^2 + \dots + c_N^2}$}
+	\corc{$Y = X_1 + \dots + X_N \sim \subGauss\(\sqrt{c_1^2 + \dots + c_N^2}\)$}
 	\edim
 
 \lemc{Data $X$ v.a $\tc \expv[X] = 0$}
-	{$X$ $L$-limitata $\imp X$ sub-gaussiana con parametro $L$}
+	{$|X| \leq L \imp X \sim \subGauss(L)$}
 	\tdim 
 	
 \defc{Data $X$ v.a e $\nu, c > 0$}
 	{$X$ sub-gamma con parametri $\nu, c$ $\quad$ se $\quad$ $ \forall \theta\in\(0,\frac{1}{c}\)  \quad \expv[\exp(\theta (X - \expv[X])] \leq \exp\(\fraz{\theta^2\nu}{2(1-c\theta)}\)$}
-	
-\lemc{Data $X$ v.a $\tc \expv[X] = 0$}
-	{$X, -X$ sub-gamma con parametri $\nu, c \imp \forall t>0 \quad \P(|X| \geq t) \leq 2\exp\(-\fraz{t^2}{2(\nu+ct)}\)$}
-	\tdim
+\notz{$X \sim \subGamma(\nu, c) \iff X$ sub-gamma con parametri $\nu, c$}{}
 
-\lemc{Date $A \in \R^{n\times n}$ simmetrica, $X \sim \gaus(0, I_n)$ e $Y = X^\trasp A X - \tr(A)$}
-	{$Y, -Y$ sub-gamma con parametri $(\nu, c) = \(2\|A\|_F, 2\|A\|_2\)$}
+\lemc{Data $X$ v.a $\tc \expv[X] = 0$}
+	{$X, -X \sim \subGamma(\nu, c) \imp \forall t>0 \quad \P(|X| \geq t) \leq 2\exp\(-\fraz{t^2}{2(\nu+ct)}\)$}
 	\tdim
-	\corc {Date $A \in \R^{n\times n}$ simmetrica e $X \sim \gaus(0, I_n)$}
-	{$\forall \varepsilon > 0 \quad \P\(|X^\trasp A X - \tr(A)| \geq \varepsilon\) \leq 2\exp\(-\fraz{\varepsilon^2}{4\|A\|_F + 4\varepsilon\|A\|_2}\)$}
-	\edim 
 
 \section{Risultati vari}
 \subsection{Metodo delle potenze}
@@ -109,20 +118,265 @@
 	\dimc{$\expv[X^\trasp A X] =\expv[\tr(X^\trasp A X)] = \expv[\tr(AXX^\trasp)] = \tr(A\expv[XX^\trasp]) = \tr(A)$}
 	
 \defc[Stimatore di Girard - Hutchinson]{Dati $A \in \R^{n \times n}$ simmetrica e $X^{(1)}, \dots, X^{(N)} \in \R^n$ v.a. $\tc \forall i \quad \expv\left[X^{(i)} {X^{(i)}}^\trasp\right] = I_n$}
-	{$\tr_N(A) = \fraz{1}{N} \som_i  {X^{(1)}}^\trasp A X^{(i)}$}
+	{$\tr_N(A) = \fraz{1}{N} \som_i  {X^{(i)}}^\trasp A X^{(i)}$}
 	\prop{$\expv[\tr_N(A)] = \tr(A)$}
 
 \teoc{Dati $A \in \R^{n \times n}$ simmetrica e $X \sim \gaus(0, I_n)$}
-	{$\Var\(X^\trasp A X\) = 2\|A\|_F$}
+	{$\Var\(X^\trasp A X\) = 2\|A\|_F^2$}
 	\tdim
-	\corc{$\forall \varepsilon, \delta > 0 \quad \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq \delta \iff N \geq 2\|A\|_F \fraz{1}{\varepsilon^2}\fraz{1}{\delta}$}
+	\corc{$\forall \varepsilon, \delta > 0 \quad N \geq 2\|A\|_F^2 \fraz{1}{\varepsilon^2}\fraz{1}{\delta} \imp \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq \delta$}
 	\edim
 
 \teoc{Dati $A \in \R^{n \times n}$ simmetrica e $X \sim Rademacher(n)$}
-	{$\Var\(X^\trasp A X\) = 2\|A - diag(A)\|_F$}
+	{$\Var\(X^\trasp A X\) = 2\|A - diag(A)\|_F^2$}
 	\tdim
-	\corc{$\forall \varepsilon, \delta > 0 \quad \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq \delta \iff N \geq 8n^2\|A\|_F \fraz{1}{\varepsilon^2}\log\(\fraz{2}{\delta}\)$}
+	\corc{Dati $A \in \R^{n \times n}$ simmetrica e $X^{(1)}, \dots, X^{(N)} \sim Rademacher(n)$}
+	{$\forall \varepsilon, \delta > 0 \quad N \geq 8n^2\|A\|_2^2 \fraz{1}{\varepsilon^2}\log\(\fraz{2}{\delta}\) \imp \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq \delta $}
 	\edim
+	
+\lemc{Date $A \in \R^{n\times n}$ simmetrica, $X \sim \gaus(0, I_n)$ e $Y = X^\trasp A X - \tr(A)$}
+	{$Y, -Y \sim \subGamma\(2\|A\|_F^2, 2\|A\|_2\)$}
+	\tdim
+	
+\prpc {Date $A \in \R^{n\times n}$ simmetrica}
+	{$\forall \varepsilon > 0 \quad \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq 2\exp\(-\fraz{\varepsilon^2}{4\|A\|_F^2 + 4\varepsilon\|A\|_2}\)$}
+	\tdim 
+	\corc{Dati $A \in \R^{n \times n}$ simmetrica e $X^{(1)}, \dots, X^{(N)} \sim \gaus(0, I_n)$}
+	{$\forall \varepsilon, \delta > 0 \quad N \geq (4\|A\|_F^2 + 4\varepsilon\|A\|_2) \fraz{1}{\varepsilon^2}\log\(\fraz{2}{\delta}\) \imp \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq \delta$}
+	\edim
+	
+\prpc {Date $A \in \R^{n\times n}$ simmetrica}
+	{$\forall \varepsilon > 0 \quad \P\(\fraz{|\tr_N(A) - \tr(A)|}{\tr(A)} \geq \varepsilon\) \leq 2\exp\(-\fraz{\varepsilon^2 N}{8}\)$}
+	\tdim
+	\corc{Dati $A \in \R^{n \times n}$ simmetrica e $X^{(1)}, \dots, X^{(N)} \sim \gaus(0, I_n)$}
+	{$\forall \varepsilon, \delta > 0 \quad N \geq \fraz{8}{\varepsilon^2}\log\(\fraz{2}{\delta}\) \imp \P\(\fraz{|\tr_N(A) - \tr(A)|}{\tr(A)} \geq \varepsilon\) \leq \delta$}
+	\edim
+
+\teoc[Disuguaglianza di Hanson-Wright]{Dati $A \in \R^{n\times n}$ simmetrica e $X = \(X_1, \dots, X_N\)$ v.a.$\tc \forall i \quad X_i  \sim \subGauss(c)$ centrata}
+	{$\forall \varepsilon > 0 \quad \P\(|X^\trasp A X - \tr(A)| \geq \varepsilon\) \leq 2\exp\(-\fraz{\varepsilon^2}{80c^4\|A\|_F^2 + 16c^2\varepsilon\|A\|_2}\)$}
+	\edim
+	\corc{Dati $A \in \R^{n \times n}$ simmetrica e $X^{(1)}, \dots, X^{(N)} \sim \subGauss(c)$}
+	{$\forall \varepsilon, \delta > 0 \quad N \geq (80\|A\|_F^2 + 16\varepsilon\|A\|_2) \fraz{1}{\varepsilon^2}\log\(\fraz{2}{\delta}\) \imp \P\(|\tr_N(A) - \tr(A)| \geq \varepsilon\) \leq \delta$}
+	\edim
+
+\subsubsection{Metodi di Krylov per $x^\trasp f(A) x$}
+\begin{itemize}
+	\item definizione e algoritmo di Lanczos
+	\item definizione di $T_m$ e $U_m$
+	\item dimostrazione $x^\trasp f(A) x \approx \|x\|^2f(T_m)_{1, 1}$
+	\item rappresentazione integrale di $x^\trasp f(A) x$
+	\item teorema di quadratura gaussiana rispetto alla misura della rappresentazione integrale
+	\item stima errore tramite proprietà della quadratura gaussiana
+\end{itemize}
+
+
+\subsection{Tail bound per matrici}
+\notz[Loewner]{Date $A, B \in \C^{n\times n}$ hermitiane}
+	{$A \psd B$ \defnm{se $A - B$ semidefinita positiva}}
+
+\prpc{Date $A, B \in \C^{n\times n}$ hermitiane}
+	{$A \nsd B \iff \forall M \in GL(n, \C) \quad MAM^* \nsd MBM^*$}
+	\edim 
+
+\prpc{Data $A \in \C^{n\times n}$ hermitiana}
+	{$\log\(I_n + A\) \nsd A$}
+	\edim 
+
+\prpc{Date $A, B \in \C^{n\times n} \tc 0 \nd A, B$}
+	{$\bullet$ $A \nsd B \iff A^{-1} \psd B^{-1}$ \\
+	 $\bullet$ $A \nsd B \imp \log(A) \nsd \log(B)$ \\
+	 $\bullet$ $A \nsd B \imp \tr \exp(A) \leq \tr\exp(B)$}
+	\edim
+
+\lemc[Concavità di Lieb]{Date $H \in \C^{n\times n}$ hermitiana e $X \in \C^{n\times n}$ v.a. hermitiana}
+	{$\expv\left[\tr \exp(H + \log X)\right] \leq \tr \exp\(H + \log\expv[X]\)$}
+	\edim
+	\corc{Date $X_1, \dots, X_s \in \C^{n\times n}$ v.a. hermitiane indipendenti}
+	{$\tr \exp C_{X_1 + \dots + X_s}(\theta) \leq \tr \exp\(\som_k C_{X_k}(\theta)\)$}
+	\tdim 
+
+\teoc[Tropp's master inequality]{Date $X_1, \dots, X_s \in \C^{n\times n}$ v.a. hermitiane indipendenti}
+	{$\forall t, \theta > 0 \quad \P\left[\lambda_{\max}\(X_1 + \dots + X_s\) \geq t\right] \leq e^{-\theta t}\tr \exp\(C_{X_1}(\theta) + \dots + C_{X_s}(\theta)\)$}
+	\tdim
+	
+\prpc {Data $X \in \C^{n\times n}$ v.a. hermitiana centrata}
+	{$\|X\| \leq L \imp C_X(\theta) \nsd g_L(\theta)\expv[X^2]$}
+	\tdim 
+	
+\teoc[Bernstein matrix inequality]{Date $X_1, \dots, X_s \in \C^{n\times n}$ v.a. hermitiane indip. centrate e $Y = X_1 + \dots+ X_s$}
+	{$\forall k \quad \|X_k\|_2 \in [-L, L] \imp \exists \sigma^2 = \left\|\expv[Y^2]\right\|_2 \tc \forall t, \theta > 0 \quad \P\left[\lambda_{\max}(Y) \geq t\right] \leq e^{-\theta t} n \exp\(g_L(\theta) \sigma^2\)$}
+	\tdim
+	\corc{$\forall \theta > 0 \quad \expv\left[\lambda_{\max}(Y)\right] \leq \fraz{1}{\theta}n\exp\(g_L(\theta) \sigma^2\)$}
+	\tdim
+	\corc{$\forall t > 0 \quad \P\left[\lambda_{\max}(Y) \geq t\right] \leq n \exp\(\fraz{-\frac{t^2}{2}}{\sigma^2 + \frac{Lt}{3}}\)$}
+	\edim
+	\corc{$\expv\left[\lambda_{\max}(Y)\right] \leq \sqrt{2\sigma^2\log n} + \frac{1}{3}L \log n$}
+	\edim
+		 
+\teoc{Date $X_1, \dots, X_s \in \C^{m\times n}$ v.a. indip. centrate $\tc \forall k \quad \|X_k\|_2 \in [-L, L]$ e $Y = X_1 + \dots+ X_s$}
+	{$\exists \sigma^2 = \max\left\{\left\|\expv[Y^*Y]\right\|_2, \left\|\expv[YY^*]\right\|_2\right\} \tc \begin{cases} \forall t > 0 \quad \P\left[\|Y\|_2 \geq t\right] \leq (m+n) \exp\(\fraz{-\frac{t^2}{2}}{\sigma^2 + \frac{Lt}{3}}\) \\ \expv[\|Y\|_2] \leq \sqrt{2\sigma^2\log(m+n)} + \frac{1}{3}L \log (m+n)\end{cases}$}
+	\tdim
+
+\subsubsection{Approsimazione di matrici tramite sampling}
+\notz{Data $A = A_1 + \dots + A_d \in \C^{n\times m}$ e $p \in [0, 1]^d \tc \|p\|_1 = 1$}
+	{$X_A = X_{A, p}$ v.a. $\tc \mathcal{L}\(X_{A}\) = \som_i p^i \delta_{p_i^{-1}A_i}$}
+	
+\teoc{Data $A = A_1 + \dots + A_d \in \C^{n\times m}$, $X_1, \dots, X_s \sim X_A$ e $\ov{X} = \fraz{1}{s}\som_i X_i$}
+	{$\begin{cases} \|X_A\| \leq L \\ \max\{\expv[X^*X], \expv[XX^*]\} \leq \sigma^2\end{cases} \imp \begin{cases} \forall t > 0 \quad \P\left[\left\|\ov{X} - A\right\|_2 \geq t\right] \leq (m+n) \exp\(\fraz{-\frac{st^2}{2}}{\sigma^2 + \frac{2Lt}{3}}\) \\ \expv\left[\left\|\ov{X} - A\right\|_2\right] \leq \sqrt{\fraz{2\sigma^2\log(m+n)}{s}} + \fraz{2L \log (m+n)}{3s}\end{cases}$}
+	\tdim
+	\corc{$\forall \varepsilon, \delta > 0 \quad s \geq \log\(\fraz{m+n}{s}\)\fraz{\sigma^2 + \frac{2L\varepsilon}{3}}{\frac{\varepsilon^2}{2}} \imp \P\left[\left\|\ov{X} - A\right\|_2 \geq \varepsilon\right] \leq \delta$}
+		\edim
+	\corc{$\forall \varepsilon > 0 \quad s \geq \max\left\{\fraz{2\sigma^2\log(m+n)}{\varepsilon^2}, \fraz{2L\log(m+n)}{3\varepsilon}\right\} \imp \expv\left[\left\|\ov{X} - A\right\|_2\right] \leq 2\varepsilon$}
+		\edim
+	
+
+\defc[Coerence statistic]{Data $A = \colspan{a_1 \mid \cdots \mid a_m} \in \C^{n\times m}$}
+	{$\mu(A) = m \fraz{\mx_k \|a_k\|_2}{\|A\|_2}$}
+
+\prpc{Date $C = \colspan{c_1 \mid \cdots \mid c_d} \in \C^{n\times d}$, $R = \colspan{r_1 \mid \cdots \mid r_d} \in \C^{m\times d} \tc \|C\|_2 = \|R\|_2 = 1$ e $A = CR^* = \som_k c_k r_k^*$}
+	{$p = \frac{1}{d}\1_d \imp \|X_{A, p}\|_2, \left\|\expv\left[X_{A, p}X_{A, p}^*\right]\right\|_2, \left\|\expv\left[X_{A, p}^*X_{A, p}\right]\right\|_2 \leq \max\{\mu(C), \mu(R)\}$}
+	\tdim
+	\corc {Date $X_1, \dots, X_s \sim X_{A, p}$ e $\ov{X} = \fraz{1}{s}\som_i X_i$}
+		{$\forall \varepsilon > 0 \quad s \geq 2\max\left\{\frac{1}{\varepsilon^2}, \frac{1}{3\varepsilon}\right\}\max\{\mu(C), \mu(R)\}\log(m+n) \imp \expv\left[\left\|\ov{X} - A\right\|_2\right] \leq2\varepsilon$}
+		\edim
+	
+\defc[Stable rank]{$A \in \C^{n\times m}$}
+	{$\srank(A) = \fraz{\|A\|_F}{\|A\|_2}$}
+	\prop{$\srank(A) \leq \min\{n, m\}$}
+
+\prpc{Date $C = \colspan{c_1 \mid \cdots \mid c_d} \in \C^{n\times d}$, $R = \colspan{r_1 \mid \cdots \mid r_d} \in \C^{m\times d} \tc \|C\|_2 = \|R\|_2 = 1$ e $A = CR^* = \som_k c_k r_k^*$}
+	{$\forall k \quad p_k = \fraz{\|c_k\|_2^2 + \|r_k\|^2}{\|C\|_F^2 + \|R\|^2_F} \imp \|X_{A, p}\|_2, \left\|\expv\left[X_{A, p}X_{A, p}^*\right]\right\|_2, \left\|\expv\left[X_{A, p}^*X_{A, p}\right]\right\|_2 \leq \max\{\srank(C), \srank(R)\}$}
+	\tdim
+	\corc {Date $X_1, \dots, X_s \sim X_{A, p}$ e $\ov{X} = \fraz{1}{s}\som_i X_i$}
+		{$\forall \varepsilon > 0 \quad s \geq \max\left\{\frac{1}{\varepsilon^2}, \frac{1}{3\varepsilon}\right\}(m+n)\log(m+n) \imp \expv\left[\left\|\ov{X} - A\right\|_2\right] \leq2\varepsilon$}
+		\edim
+		
+\subsection{Multiplicative Chernoff inequality}
+\lemc{Data $X$ v.a. $\tc X \in [0, 1]$}
+	{$\forall \theta \quad C_X(\theta) \leq (e^\theta -1)\expv[X]$}
+	\tdim 
+
+\lemc{Data $X \in \R^{m\times n}$ v.a. simmetrica definita positiva $\tc \lambda_{\max}(X) \leq 1$}
+	{$\forall \theta \quad C_X(\theta) \nsd (e^\theta -1)\expv[X]$}
+	\tdim 
+
+\teoc{Date $X_1, \dots, X_s \in \R^{n\times n}$ v.a. simmetriche definite positive $\tc \forall s \quad \lambda_{\max}(X_s) \leq 1$ e $Y = X_1 + \dots + X_s$}
+	{$\bullet$ $\forall t > 0 \quad \P\left[\lambda_{\max}(Y) \geq (1+t)\lambda_{\max}(\expv[Y])\right] \leq n \(\fraz{e^t}{(1+t)^{1+t}}\)^{\lambda_{\max}(\expv[Y])}$ \\
+	 $\bullet$ $\forall t \in (0, 1) \quad \P\left[\lambda_{\min}(Y) \leq (1-t)\lambda_{\max}(\expv[Y])\right] \leq n \(\fraz{e^{-t}}{(1-t)^{1-t}}\)^{\lambda_{\min}(\expv[Y])}$}
+	\edim
+
+\subsubsection{Connessione di un grafo di Erd\o s - Rényi}
+\defc{Dato $G = (\mathcal{V}_G, \mathcal{E}_G)$ grafo}
+	{$\bullet$ $A_G = \((v_i, v_j) \in \mathcal{E}_G\)_{i, j}$ \defnm{matrice di adiacienza di $G$} \\
+	 $\bullet$ $L_G = diag\(A_G \1_{\sharp \mathcal{V}_G}\) - A$ \defnm{laplaciano di $G$}}
+	 \prop{$\1_{\sharp \mathcal{V}_G} \in \ker(L_G)$}
+
+\prpc{Dati $G = (\mathcal{V}_G, \mathcal{E}_G)$ grafo, $A = A_G$ e $L = L_G$}
+	 {$\forall x \in \C^{\sharp \mathcal{V}_G} \quad x^*Lx = \som_{i<j} A_{ij}(x_i - x_j)^2$}
+	 \edim
+	 \corc{$L$ semidefinita positiva}{}
+	 	\edim 
+	 \corc{$G$ connesso $\iff \dim\ker(L) = 1$}{}
+	 	\edim
+
+
+\defc[Grafo di  Erd\o s - Rényi] {Dati $n \in \N$ e $p \in (0, 1)$}
+	{$G = G(n, p) \tc \begin{cases} \sharp \mathcal{V}_G = n \\ \forall i\not=j \quad \P\left[(v_i, v_j) \in \mathcal{E}_G\right] = p\end{cases}$}
+	
+\prpc{Dati $n \in \N$, $p \in (0, 1)$ e $\{b_{ij}\} \sim Bernoulli(p)$}
+	{$L_{G(n, p)} = \som_{i < j} b_{ij} \(E_{ii} - E_{ij} - E_{ji} + E_{jj}\)$}
+	\edim
+
+\teoc{Dati $n \in \N$, $p \in (0, 1)$}
+	{$\P[G(n, p) \text{ sconnesso}] \leq (n-1)e^{-\frac{pn}{2}}$}
+	\tdim 
+\corc{$p > \fraz{2\log\(n-1\)}{n} \imp \P[G(n, p) \text{ connesso}] > 0$}
+	\edim
+	
+\section{Embedding di sottospazi}
+\notz{$Sub_k(\R^n) = \{L \subseteq \R^n \mid L$ sottospazio$\tc \dim L = k\}$}{}
+
+\defc{Dati $\varepsilon >0$ e $L \in Sub(\R^n)$}
+	{$S : \R^n \to \R^s$ $\varepsilon$-embedding per $L$  $\quad$ se  $\quad$ $\forall x \in L \quad (1-\varepsilon)\|x\|_2^2 \leq \|Sx\|_2^2 \leq (1+\varepsilon)\|x\|_2^2$}
+
+\lemc{Dati $L \in Sub_k(\R^n)$, $U \in R^{n\times k}$ base ortonormale di $L$, $S \in \R^{s\times n}$ e $\varepsilon >0$}
+	{$S$ $\varepsilon$-embedding per $L$ $\iff \begin{cases} \sigma_{\min}^2(SU) \geq 1-\varepsilon \\ \sigma_{\max}^2(SU) \leq 1+\varepsilon \end{cases} \iff \left\|I_k - U^\trasp S^\trasp SU\right\|_2 \leq \varepsilon$}
+	\tdim
+	
+\defc{Dati $k, n \in \N$, $\varepsilon, \delta >0$ e $S \in \R^{n\times s}$ v.a.}
+	{$S$ $(k, \varepsilon, \delta)$ - oblivius subspace embedding $\quad$ se $\quad$ $\forall L \in Sub_k(\R^n) \quad \P\left[S\text{ }\varepsilon\text{-embedding per }L\right] \geq 1-\delta$}
+
+\subsection{Embedding Gaussiani}
+\lemc{Dati $x \in \R^n$ e $S \in \R^{s \times n}$ v.a $\tc s_{ij} \sim \gaus\(0, \frac{1}{s}\)$}
+	{$\bullet$ $\expv\left[\|Sx\|_2^2\right] = \|x\|_2^2$ \\
+	 $\bullet$ $\forall \varepsilon >0 \quad \P\(\left|\|Sx\|_2^2 - \|x\|_2^2\right| \geq \varepsilon \|x\|^2_2\) \leq 2 \exp\(-\fraz{ \varepsilon^2 s}{4+4\varepsilon}\)$}
+	 \tdim
+	 \corc{$\forall \varepsilon, \delta > 0 \quad s \geq \fraz{4+4\varepsilon}{\varepsilon^2}\log\fraz{2}{\delta} \imp S \in \R^{s \times n}$ v.a $\tc s_{ij} \sim \gaus\(0, \frac{1}{s}\)$ $(1, \varepsilon, \delta)$ - oblivius subspace embedding}
+	 \edim
+
+
+\defc{Dati $(T, d)$ spazio metrico, $K \subseteq T$ e $\varepsilon > 0$}
+	{$\bullet$ $N \subseteq K$ $\varepsilon$-net di $K$ \defnm{se $\quad$ $\forall x \in K \quad d(x, N) \leq \varepsilon$} \\ 
+	 $\bullet$ $\mathcal{N}(K, \varepsilon) = \min\left\{n \in \N \bmid \exists x_1, \dots, x_n \in K \tc K \subseteq \union_i B_\varepsilon(x_i)\right\}$}
+ 
+\lemc{$\forall n \in \N \quad \forall \varepsilon > 0 \quad \mathcal{N}\(B^n_1, \varepsilon\) \leq \(\frac{2}{\varepsilon} + 1\)^n$}{}
+	\tdim
+	\corc{$\forall n \in \N \quad \forall \varepsilon > 0 \quad \mathcal{N}\(\S^{n-1}, \varepsilon\) \leq \(\frac{2}{\varepsilon} + 1\)^n - \(\frac{2}{\varepsilon} - 1\)^n$}{}
+	\edim
+
+\lemc{Dati $\varepsilon \in \(0, \frac{1}{2}\)$, $\mathcal{N} \subseteq \S^{n-1}$ $\varepsilon$-net}
+	{$\forall A \in \R^{n\times n}$ simmetrica $\quad \sup_{x \in \mathcal{N}}|\la Ax, x\ra| \leq \|A\|_2 \leq \fraz{1}{1-2\varepsilon}\sup_{x \in \mathcal{N}}|\la Ax, x\ra|$}
+	\tdim
+
+\lemc{Data $B \in \R^{s \times k}$ v.a. $\tc b_{ij} \sim \gaus\(0, \frac{1}{s}\)$}
+	{$\forall \varepsilon > 0 \quad \P\(\|B^\trasp B - I_k\|_2 \geq \varepsilon\) \leq 2 \exp\(k\log 9 - \fraz{\varepsilon^2 s}{16 + 8\varepsilon}\)$}
+	\tdim
+
+\teoc{Dati $L \in Sub_k(\R^n)$, $U \in R^{n\times k}$ base ortonormale di $L$ e $S \in \R^{s \times n}$ v.a $\tc s_{ij} \sim \gaus\(0, \frac{1}{s}\)$}
+	{$\forall \varepsilon > 0 \quad \P\(S\text{ }\varepsilon\text{-embedding per }L\) \geq 1 - 2 \exp\(k\log 9 - \fraz{\varepsilon^2 s}{16 + 8\varepsilon}\)$}
+	\tdim
+	\corc{$\forall k \quad \forall \varepsilon, \delta > 0 \quad s \geq \fraz{16 + 8\varepsilon}{\varepsilon^2}\(k\log 9 + \log\fraz{2}{\delta}\) \imp S$ $(k, \varepsilon, \delta)$ - oblivius subspace embedding}
+	\edim
+
+\lemc[Johnson - Linderstrauss]{Dati $\varepsilon \in (0, 1)$ e $X \subset \R \tc \sharp X = N$}
+	{$\forall s \geq \fraz{8 \log(2N^2)}{\varepsilon^2} \quad \exists S : \R^n \to \R^s$ lineare $\tc \forall u, v \in X \quad (1-\varepsilon)\|u-v\|_2^2 \leq \|Su-Sv\|_2^2 \leq (1+\varepsilon)\|u-v\|_2^2$}
+	\edim
+	
+\subsection{Subsampled Randomized Hadamard Transform (SRHT)}
+\defc[Matrice di Hadamard]{$H \in \R^{n\times n} \tc \begin{cases}\forall i, j \quad h_{ij} = \pm1 \\ \forall i \not=j \quad H^i, H_i \perp H^j, H_j\end{cases}$}{}
+
+\prpc[Construzione di Sylvester]{Data $H_1 = [1]$}
+	{$\forall n \quad H_n = \fraz{1}{\sqrt{2}}\begin{bmatrix} H_{\frac{n}{2}} & H_{\frac{n}{2}} \\ H_{\frac{n}{2}} & -H_{\frac{n}{2}}\end{bmatrix}$ matrice di Hadamard}
+	\tdim
+
+\defc[SRHT]{Date $C \in \R^{s \times n} \tc C_i \sim e_{Unif(n)}^\trasp$, $H \in \R^{n\times n}$ matrice di Hadamard riscalata e $D = diag(Rademacher(n))$}
+	{$S = \sqrt{\frac{n}{s}}CHD$ Subsampled Randomized Hadamard Transform}
+
+\lemc{Dati $S = \sqrt{\frac{n}{s}}CHD$ SRHT e $x \in \R^n$}
+	{$\expv\left[\|Sx\|_2^2\right] = \|x\|_2^2$}
+	\tdim
+
+\teoc{Dati $f : \R^n \to \R$ $L$ - Lipschitziana e $r \sim Rademacher(n)$}
+	{$\forall t \quad \P\(f(r) \geq \expv[f(r)] + Lt\) \leq \exp\(-\frac{t^2}{8}\)$}
+	\edim
+	
+\lemc{Date $U \in \R^{n\times k}$ ortonormale, $H \in \R^{n\times n}$ matrice di Hadamard riscalata e $D \sim diag(Rademacher(n))$}
+	{$W = HDU$ ortonormale $\tc \forall t \quad \P\(\mx_j \left\|e_j^\trasp W\right\|_2 \geq \sqrt{\fraz{k}{n}} + \fraz{t}{\sqrt{n}}\) \leq n \exp\(-\fraz{t^2}{8}\)$}
+	\tdim
+
+\teoc[Tropp, 2011]{Date $U \in \R^{n\times k}$ ortonormale e $S = \sqrt{\frac{n}{s}}CHD \in \R^{s\times n}$ SRHT}
+	{$\forall \alpha, \xi, \eta \quad s \geq \alpha \log k \(\sqrt{k} + \sqrt{8\log(nk)}\)$ \\
+		\phantom{.$\qquad\qquad\qquad\qquad$.} $\imp \P\(\begin{matrix} \sigma_{\min}(SU) \geq \sqrt{1-\xi} \\ \sigma_{\max}(SU) \leq \sqrt{1+\eta}\end{matrix}\) \geq 1 - \fraz{1}{k} - k \(\fraz{e^{-\xi}}{(1-\xi)^{1-\xi}}\)^{\alpha\log k} - k \(\fraz{e^{\eta}}{(1+\eta)^{1+\eta}}\)^{\alpha\log k}$}
+	\edim
+
+\subsection{Sparse random embeddings}
+\defc{Dato $p \in (0, 1)$}
+	{$\bullet$ $\tilde s = \tilde s(p)$ v.a. $\tc \mathcal{L}(\tilde s) = (1-p)\delta_0 + \frac{p}{2}\delta_1 + \frac{p}{2}\delta_{-1}$ \\ 
+	 $\bullet$ $S = S(p) \in \R^{s \times n}$ v.a. $\tc \forall i, j \quad s_{ij} \sim \frac{1}{\sqrt{ps}}\tilde s(p)}$}
+
+\teoc{$\forall n, k \quad \begin{cases} s \approx (\log n + k) \log k \\ p \approx \frac{\log k}{s}\end{cases} \imp S(p) \in \in \R^{s \times n}$ oblivious subspace embedding}
+	\edim
+	
 
 
 

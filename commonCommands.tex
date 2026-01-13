@@ -91,6 +91,9 @@
 \newcommand {\expv}	[0] {\mathbb{E}}	%Expected value 
 \newcommand {\gaus}	[0] {\mathcal{N}}	%Normal distributions 
 
+\newcommand {\subGauss}	[0] {\mathcal{SG}}	%SubGaussian
+\newcommand {\subGamma}	[0] {\mathcal{S}\Gamma}	%SubGamma
+
 \renewcommand {\S} [0] {\mathbb{S}}	%Sphere
 
 
@@ -128,7 +131,7 @@
 
 %Math custom operators
 \DeclareMathOperator*{\Sup} {sup}		%Supremun				
-\DeclareMathOperator*{\Inf} {inf}			%Infimun
+\DeclareMathOperator*{\Inf} {inf}		%Infimun
 \DeclareMathOperator{\sgn}{sgn}			%Sign function
 
 \DeclareMathOperator{\im} {im}			%Image of a function
@@ -153,9 +156,10 @@
 \renewcommand {\j} [0] {\lowerJ}			
 \DeclareMathOperator {\J} {J}				%Jacobian
 
-\DeclareMathOperator*{\tr} {tr}				%trace of a matrix
+\DeclareMathOperator{\tr} {tr}				%Trace operator
+\DeclareMathOperator{\srank}{srank}			%Stable rank function
 
-\DeclareMathOperator*{\Var} {Var}			%Variance of a v.a.
+\DeclareMathOperator{\Var} {Var}			%Variance of a v.a.
 
 %Math inline symbols
 \renewcommand {\(}		[0] {\left(}							%Adaptive left round bracket
@@ -188,7 +192,12 @@
 \newcommand {\checkv}	[0] {\checkmark}						%v-chech symbol
 \newcommand {\1}		[0] {1}								%Characteristic function
 
-\newcommand {\trasp}	[0] {T}							%transpose symbol
+\newcommand {\trasp}	[0] {\mathrm{T}}						%transpose symbol
+\newcommand {\pd}	[0] {\succ}							%pos  def relation symbol
+\newcommand {\psd}	[0] {\succeq}							%pos sdef relation symbol
+\newcommand {\nd}	[0] {\prec}							%neg  def relation symbol
+\newcommand {\nsd}	[0] {\preceq}							%neg sdef relation symbol
+
 
 
 %Math displaystyle symbols
@@ -221,6 +230,7 @@
 
 \newcommand {\floor}	[1] {\left\lfloor {#1} \right\rfloor}
 
+\newcommand {\colspan}	[1] {\left[\; #1 \;\right]}
 
 %Text modifiers
 
