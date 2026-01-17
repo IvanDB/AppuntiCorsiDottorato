@@ -132,6 +132,8 @@
 %Math custom operators
 \DeclareMathOperator*{\Sup} {sup}		%Supremun				
 \DeclareMathOperator*{\Inf} {inf}		%Infimun
+\DeclareMathOperator*{\GLim} {\Gamma-\lim}	%Gamma limit
+
 \DeclareMathOperator{\sgn}{sgn}			%Sign function
 
 \DeclareMathOperator{\im} {im}			%Image of a function
@@ -155,6 +157,7 @@
 \DeclareMathOperator*{\lowerJ} {j}			%???
 \renewcommand {\j} [0] {\lowerJ}			
 \DeclareMathOperator {\J} {J}				%Jacobian
+\DeclareMathOperator {\starJ} {*J}			%Jacobian current
 
 \DeclareMathOperator{\tr} {tr}				%Trace operator
 \DeclareMathOperator{\srank}{srank}			%Stable rank function
@@ -208,7 +211,7 @@
 \newcommand {\undis}	[0] {\displaystyle \bigsqcup}			%Disjoint union
 \newcommand {\somdir}	[0] {\displaystyle \bigoplus}		%Direct sum
 
-\newcommand {\mx} 		[0] {\displaystyle \max}			%Maximum
+\newcommand {\mx} 	[0] {\displaystyle \max}			%Maximum
 \newcommand {\mn} 	[0] {\displaystyle \min}				%Minimum
 \renewcommand {\sup} 	[0] {\displaystyle\Sup}			%Supremum
 \renewcommand {\inf} 	[0] {\displaystyle\Inf}				%Infimum
@@ -219,6 +222,7 @@
 \newcommand {\lms} 	[0] {\limSup_{n\to+\infty}}			%Sequence limsup
 \newcommand {\limInf}	[0] {\displaystyle \liminf}			%Generic liminf
 \newcommand {\lmi} 		[0] {\limInf_{n\to+\infty}}		%Sequence liminf
+\newcommand {\Glim} 	[0] {\displaystyle\GLim}			%Generic Gamma limit
 
 \newcommand {\fraz} 	[0] {\displaystyle\frac}				%Fractions
 \newcommand {\intg} 	[0] {\displaystyle\int}				%Single integral

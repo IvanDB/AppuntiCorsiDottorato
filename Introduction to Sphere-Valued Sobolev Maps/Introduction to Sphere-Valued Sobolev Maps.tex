@@ -451,12 +451,12 @@
 	\prop {$u \in W^{1, 2}\(\Omega, \R^3\) \cap L^{\infty}(\Omega, \R^3) \imp j u \in L^1(\Omega, \R^3)$}
 
 \defc {Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}\(\Omega, \R^3\) \cap L^{\infty}\(\Omega, \R^3\) $}
-	{$\J u = \fraz{1}{3}\div(\j u)$}
+	{$\J u = \frac{1}{3}\div(\j u)$}
 	\prop {$\J u \in \dist(\Omega, \R)$}
 
 \defc {Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}\(\Omega, \S^2\) $}
 	{$\bullet$ $d_\nabla(\j u) = \inf\left\{\|j u - \curl\varphi\|_{L^1(\Omega, \R^3)} \mid \varphi \in W^{1, 1}\(\Omega, \R^3\)\right\}$ \n
-	$\bullet$ $E_{\mathcal{M}}(\J u) = \min\left\{\|\mu\| \mid \frac{1}{3}\div \mu = \J u\right\}$ \n
+	$\bullet$ $E_{\mathcal{M}}(\J u) = \min\left\{\|\mu\|_{\mathcal{M}(\Omega)} \mid \frac{1}{3}\div \mu = \J u\right\}$ \n
 	$\bullet$ $E_2(\J u) = \inf \left\{\intg_\Omega |\nabla v|^2 \bmid v \in W^{1, 2}(\Omega, \S^2) \tc \J u = \J v\right\}$}
 
 \teoc {Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}\(\Omega, \S^2\)$}
@@ -465,7 +465,199 @@
 
 \prpc {Dati $\Omega \subseteq \R^3$ \tempReg e $u : \Omega \to \S^2$}
 	{$u \in W^{1, 3}\(\Omega, \S^2\) \imp \J u = 0$}
+	\edim
 
- 
+\lemc{Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}(\Omega, \S^2)$}
+	{$\forall \theta \in C^{\infty}_c\(B_1\dif\{0\}\) \quad 3\det(\nabla(\theta u)) = \j u \cdot \nabla\(\theta^3\) + 3 \theta^3\det(\nabla u)$}
+	\edim
+
+
+\subsubsection{Jacobiano per mappe con singolarità puntiformi}
+
+\defc{Dati $\Omega \subseteq \R^N$ aperto liimitato, $\Phi \in C^1\(\ov{\Omega}, \R^N\)$ e $y \in \R^{N} \dif \Phi(\derp\Omega)$ valore regolare}
+	{$\deg(\Phi, \Omega, y) = \som_{x \in \Phi^{-1}(y)} \sgn\(\det \nabla \Phi(x)\)$}
+	\prop{$\deg(\Phi, \Omega, y)$ localmente costante rispetto a $y$}
+
+\prpc{Dati $\Omega = B_1 \subseteq \R^N$, $\Phi \in C^1\(\ov{\Omega}, \R^N\)$}
+	{$\Phi(\derp \Omega) \subseteq \S^{N-1} \imp \forall y \in \Omega \quad \deg(\Phi, \Omega, y) = \deg\(\Phi, \S^{N-1}\)$}
+	\edim
+
+\prpc{Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}(\Omega, \S^2)$}
+	{$\exists a_1, \dots, a_k \in \Omega \tc u \in C^1\(\Omega \dif \{a_i\}, \S^2\) \imp \exists r \tc \J u = \frac{4}{3} \pi \som_i \deg\(u, \derp B_r(a_i)\) \delta_{a_i}$}
+	\tdim
+
+\defc{Dati $\Omega \subseteq \R^3$ \tempReg, $\Gamma = \{a_1, \dots, a_k\}\subseteq \Omega$ e $d = (d_1, \dots, d_k)$}
+	{$A(\Gamma, d) = \inf\left\{\som_j |P_j - N_j| \bmid \{P_j, N_j\} \subseteq \ov{\Omega} \tc \som_j \delta_{P_j} - \delta_{N_j} = \som_i d_i \delta_{a_i}\right\}$}
+
+\lemc{$\forall P, N \in \R^3 \quad \mu = 4\pi \tau_{[N, P]}\mathcal{H}^1\mres_{[N, P]} \imp \frac{1}{3}\div \mu = \frac{4}{3}\pi\(\delta_{N} - \delta_{P}\)$}{}
+	\edim
+
+\teoc{Dati $\Omega \subseteq \R^3$ \tempReg, $\Gamma = \{a_1, \dots, a_k\}\subseteq \Omega$, $d = (d_1, \dots, d_k)$ e $u \in W^{1, 2}(\Omega, \S^2)$}
+	{$\J u = \fraz{4}{3} \pi\som_i  d_i \delta_{a_i} \imp d_\nabla(\j u) = E_{\mathcal{M}}(\J u) = 3\|\J u\|_* = 4\pi A(\Gamma, d)$}
+	\edim
+
+\teoc{Dati $\Omega \subseteq \R^3$ \tempReg, $\Gamma = \{a_1, \dots, a_k\}\subseteq \Omega$, $d = (d_1, \dots, d_k)$ e $u \in W^{1, 2}(\Omega, \S^2)$}
+	{$\J u = \fraz{4}{3} \pi\som_i  d_i \delta_{a_i} \imp E_2(\J u) = 8\pi A(\Gamma, d)$}
+	\edim
+
+\subsubsection{Jacobiano per mappe $W^{1, 2}$ generiche}
+\defc{Dato $\Omega \subseteq \R^3$ \tempReg}
+	{$\mathcal{E}_\Omega = \left\{\som_{j \in \N} \delta_{P_j} - \delta_{N_j} \bmid \begin{matrix} P_j, N_j \in \ov{\Omega} \\ \som_{j\in \N} |P_j - N_j| < +\infty\end{matrix}\right\}$}
+
+\teoc{Dato $\Omega \subseteq \R^3$ \tempReg}
+	{$\forall u \in W^{1, 2}(\Omega, \S^2) \quad \fraz{3}{4\pi}\J u \in \mathcal{E}_\Omega$}
+	\edim
+
+\subsubsection{Ulteriori risultati}
+\defc{Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}(\Omega, \S^2)$}
+	{$R_2(u) = \inf\left\{\lmi \intg_\Omega |\nabla u_n|^2 \bmid \{u_n\} \subseteq C^\infty(\Omega, S^2) \tc u_n \convIn{\text{a.e.}} u\right\}$}
+
+\lemc{Dati $Q_l \subseteq \R^3$ cubo di lato $l$ e $g \in Lip(\derp Q_l, \S^2) \tc \deg(g, \derp Q_l) = 0$}
+	{$\forall \delta > 0 \quad \exists u \in Lip\(\ov{Q_l}, \S^2\) \tc \begin{cases} u|_{\derp Q_l} = g \\ \|\nabla u\|_{L^2(Q_l)} \leq \frac{l}{2}\|g\|_{L^2(\derp Q_l)} + \delta\end{cases}$}
+	\tdim
+
+\teoc[Betuel '90]{Dati $\Omega \subseteq \R^3$ \tempReg e $u \in W^{1, 2}(\Omega, \S^2)$}
+	{$\J = \frac{4}{3}\pi \som_i d_i\delta_{a_i} \imp R_2(u) = \intg_\Omega |\nabla u|^2 + 8\pi A\(\{a_i\}, (d_i)\)$}
+	\tdim
+
+\defc{Dato $\Omega \subseteq \R^3$ \tempReg}
+	{$\mathcal{R}_\Omega = \left\{u \in W^{1, 2}(\Omega, \S^2) \bmid \exists \Gamma = \{a_1, \dots, a_k\} \subseteq \Gamma \tc \begin{cases} u \in C^\infty\(\Omega \dif \Gamma, \S^2\) \\ \exists r > 0 \tc \forall i \quad u|_{B_r(a_i)}(x) = \frac{x-a_i}{|x-a_i|}\end{cases}\right\}$}
+
+\teoc {Dato $\Omega \subseteq \R^3$ \tempReg}
+	{$\mathcal{R}_\Omega$ denso in $W^{1, 2}(\Omega, \S^2)$}
+	\edim
+
+\subsection{Mappe a valori in $\S^m$}
+\defc{Dati $\Omega \subseteq \R^N \tc \Omega \isom B_1$ e $u \in W^{1, m}(\Omega, \S^m)$}
+	{$\bullet$ $\forall i \quad w_i(u) = du_1 \wedge \dots \wedge du_{i-1} \wedge du_{i+1}  \wedge \dots \wedge du_{m+1}$ \\
+	 $\bullet$ $\j u = \som_i (-1)^{i+1} u_i w_i(u)$\\
+	 $\bullet$ $\J u = \fraz{1}{m+1}d(\j u)$}
+	\prop{$\j u \in L^1\(\Omega, \Lambda^m\) \qquad \J u \in \dist\(\Omega, \Lambda^{m+1}\)$}
+
+\prpc {Dati $\Omega \subseteq \R^N \tc \Omega \isom B_1$}
+	{$ \forall u \in W^{1, m+1}(\Omega, \S^m) \quad \J u = 0$}
+	\edim
+
+\defc{Dati $\Omega \subseteq \R^N \tc \Omega \isom B_1$ e $u \in W^{1, m}(\Omega, \S^m)$}
+	{$\starJ u \begin{matrix} C^\infty_c\(\Omega, \Lambda^{N-m-1}\) &\to &\R \\ \psi & \mapsto & \la \starJ u, \psi\ra = (-1)^{\dots}\intg_\Omega \j u \wedge d\psi\end{matrix}$}
+	\prop{$\starJ u$ $(N-m-1)$ - corrente}
+
+\defc{Data $\Gamma \subseteq \R^N$ sottovarietà}
+	{$\bullet$ $\tau^\perp_\Gamma$ $\dim(\Gamma)$ - forma unitaria che orienta $\Gamma$ \\
+	 $\bullet$ $S_r(\Gamma)$ $r$-sfera nel normale a $\Gamma$}
+
+\teoc{Dato $\Omega \subseteq \R^N \tc \Omega \isom B_1$}
+	{$\forall u \in \mathcal{R}^p_m(\Omega) \quad \J u = \alpha_m \som_{\Gamma_j \in \pi_0(\Sigma_u)} \deg\(u, \S_r(\Gamma_j)\) \(*\tau^\perp_{\Gamma_j}\)\mathcal{H}^{N-m-1}\mres_{\Gamma_j}$}
+	\edim
+
+\teoc{Dato $\Omega \subseteq \R^N \tc \Omega \isom B_1$}
+	{$\forall u \in W^{1, m}(\Omega, \S^m) \quad \starJ u \in \derp\{(N-m)$ - correnti intere rettificabili di $\Omega\} \subset \{(N-m-1)$ - correnti piatte di $\Omega\}$}
+	\edim
+
+\defc{Dati $\Omega \subseteq \R^N \tc \Omega \isom B_1$ e $u \in W^{1, m}(\Omega, \S^m)$}
+	{$\bullet$ $E_m(\J u) = \inf\left\{\intg_\Omega |\nabla v|^m \bmid v \in W^{1, m}(\Omega, \S^m) \tc \J v = \J u\right\}$ \\
+	 $\bullet$ $E_{\mathcal{M}}(\J u) = \inf\left\{\|\mu\|_{\mathcal{M}(\Omega, \Lambda^m)} \mid \mu \in \mathcal{M}(\Omega, \Lambda^m) \tc d\mu = \J u\right\}$ \\
+	 $\bullet$ $\|\starJ u\|_* = \sup \left\{\la \starJ u, \psi\ra \mid \psi \in C^\infty_c\(\Omega, \Lambda^{N-m-1}\) \tc \|d\psi\|_\infty \leq 1\right\}$}
+
+\defc{Dati $\Omega \subseteq \R^N \tc \Omega \isom B_1$ e $u \in W^{1, m}(\Omega, \S^m)$}
+	{$\bullet$ $\F(\starJ u) = \inf\Big\{\alpha_m \mathbb{M}(\Sigma) \mid \Sigma$ $(N-m)$-corrente $\tc \derp\Sigma = \frac{\starJ u}{\alpha_m}\Big\}$ \\
+	 $\bullet$ $\F_{I}(\starJ u) = \inf\Big\{\alpha_m \mathbb{M}(\Sigma) \mid \Sigma$ $(N-m)$-corrente intera rettificabile $\tc \derp\Sigma = \frac{\starJ u}{\alpha_m}\Big\}$}
+	\prop{$\dim(\cdot) \in \{0, N-2, N-1\} \imp \F(\cdot) = \F_I(\cdot)$} 
+
+\teoc {Dati $\Omega \subseteq \R^N \tc \Omega \isom B_1$ e $u \in W^{1, m}(\Omega, \S^m)$}
+ 	{$\bullet$ $\|\starJ u\|_* = E_{\mathcal{M}}(\J u) = \F(\starJ u)$ \\ 
+	 $\bullet$ $E_m(\J u) = c_m \F_{I}(\starJ u)$}
+	\tdim
+
+\subsubsection{Risultato di non densità per $p \geq m$}
+\teoc{Date $H : \S^3 \to \S^2$ mappa di Hopf e $u_H = H\(\frac{x}{|x|}\) : B_1^4 \to \S^2$}
+	{$\bullet$ $\forall p < 4 \quad u_H \in W^{1, p}\(B_1^4, \S^2\) \tc \J u_H = 0$ \\
+	 $\bullet$ $\forall q \geq 3 \quad u_H \not\in \ov{C^\infty\(B_1^4, \S^2\)}^{\|\cdot\|_{W^{1, q}}}$}
+	\edim
+
+\section{Problemi di minimo con condizioni al bordo}
+
+\subsection{Spazi di Sobolev frazionari}
+\defc{Dati $\Omega \subseteq \R^N$ aperto Lipschitz, $s \in (0, 1)$ e $p \geq 1$}
+	{$\bullet$ $[\;\cdot\;]_{s, p} = \(\iintg_{\Omega\times\Omega} \fraz{|{\;\cdot\;}(y) - {\;\cdot\;}(x)|^p}{|y-x|^{N+sp}}dxdy\)^{\frac{1}{p}}$ \\
+	 $\bullet$ $W^{s, p}(\Omega) = \left\{u \in L^p(\Omega) \mid [u]_{s, p}^p < +\infty\right\}$ \\ 
+	 $\bullet$ $\|\cdot\|_{W^{s, p}(\Omega)} = \(\|\cdot\|_{L^p(\Omega)} + [\;\cdot\;]_{s, p}\)^{\frac{1}{p}}$}
+	\prop{$\(W^{s, p}(\Omega), \|\cdot\|_{W^{s, p}(\Omega)}\)$ spazio di Banach}
+
+\prpc{Dato $\Omega \subseteq \R^N$ Lipschitz}
+	{$\bullet$ $\forall p\geq 1 \quad \forall s \in (0, 1) \quad Lip(\Omega) \subseteq W^{s, p}(\Omega) \subseteq L^p(\Omega)$ \\ 
+	 $\bullet$ $\forall p \geq 1\quad \forall s_1, s_2 \in (0, 1) \quad s_1 < s_2 \imp W^{s_2, p}(\Omega) \subseteq W^{s_1, p}(\Omega)$}
+	\edim
+
+\teoc[BBM formula, '01]{Dato $\Omega \subseteq \R^N$ aperto Lipschitz} 
+	{$\forall p \geq 1 \quad \exists K_{N, p} > 0 \tc \limf_{s \to 1^-} (1-s)[u]_{s, p} = \begin{cases} K_{N, p} \|\nabla u\|_{L^p(\Omega)}^p &$se $p>1$ e $u \in W^{1, p}(\Omega) \\ K_{N, p} \|Du\|_{\mathcal{M}(\Omega)}&$se $p=1$ e $u \in BV(\Omega) \\ +\infty&$altrimenti$\end{cases}$}
+	\edim
+\teoc[Ponse, '04]{BBM formula vale anche per $\Glim$}
+	\edim
+
+\teoc[Mazya - Shaposhikova, '02]{Dato $\Omega \subseteq \R^N$ aperto Lipschitz} 
+	{$\forall p \geq 1 \quad \exists K'_{N, p} > 0 \tc \forall u \in \union_{s > 0} W^{s, p}(\Omega) \quad \limf_{s \to 0} s[u]_{s, p} = K'_{N, p}\|u\|_{L^p(\Omega)}^p$}
+	\edim
+
+\subsection{Operatore di traccia}
+\teoc[Trace theorem]{Dati $\Omega \subseteq \R^N$ aperto Lipschitz e $p \in [1, +\infty)$} 
+	{$\bullet$ $\exists T : W^{1, p}(\Omega) \to W^{1 - \frac{1}{p}, p}(\derp\Omega)$ lineare limitato $\tc \forall u \in W^{1, p}(\Omega) \cap C^0\(\Omega\) \quad Tu = u|_{\derp\Omega}$ \\
+	 $\bullet$ $\exists C_p > 0 \tc \forall g \in W^{1 - \frac{1}{p}, p}(\derp\Omega) \quad \exists v \in u \in W^{1, p}(\Omega) \cap C^\infty\(\Omega\) \tc \begin{cases} Tv = g \\ \|\nabla v\|_{L^p(\Omega)} \leq C_p [g]_{1 - \frac{1}{p}, p}\end{cases}$}
+	\edim
+
+\teoc[Gagliardo - Niremberg inequality]{Dato $\Omega \subseteq \R^N$ aperto Lipschitz}
+	{$\forall p \quad \exists C_p > 0 \tc \forall u \in BV(\Omega) \cap L^\infty(\Omega) \quad \forall \theta \in (0, 1) \quad [u]_{\frac{\theta}{p}, p} \leq C_p\|Du\|_{\mathcal{M}(\Omega)}^{\frac{1}{p}}\|u\|_{L^{\infty}(\Omega)}^p$}
+	\edim
+\corc{$p \in (1, 2) \imp BV(\Omega) \cap L^\infty(\Omega) \into W^{1 - \frac{1}{p}, p}(\derp\Omega)$}
+	\edim
+
+\subsection{Problemi di Dirichlet}
+\notz {Dato $\Omega \subseteq \R^N$}
+	{$\Omega$ \tempReg \qquad \text{se} \qquad $\Omega \isom B_1$ aperto liscio}
+
+\defc {Dati $\Omega \subseteq \R^N$ \tempReg e $g \in C^\infty(\derp\Omega)$}
+	{$W^{1, p}_g(\Omega, \S^1) = \{u \in W^{1, p}(\Omega) \mid Tu = g\}$}
+
+\defc {Dati $\Omega \subseteq \R^N$ \tempReg e $g \in C^\infty(\derp\Omega, \S^1)$}
+	{$\bullet$ $W_p(g) = \inf\left\{\intg_\Omega |\nabla u|^p \bmid u \in W^{1, p}_g(\Omega, \S^1)\right\}$ \\ 
+	 $\bullet$ $J_p(g) = \inf\left\{\intg_\Omega |\nabla u|^p \bmid u \in W^{1, p}_g(\Omega, \S^1) \tc \J u = 0\right\}$ \\ 
+	 $\bullet$ $C_p(g) = \inf\left\{\intg_\Omega |\nabla u|^p \bmid u \in W^{1, p}_g(\Omega, \S^1) \cap C^0(\ov{\Omega}, \S^1)\right\}$}
+	\prop{$\forall p \quad W_p(g) \leq J_p(g) \leq C_p(g)$}
+
+\teoc{Dati $N\geq 2$, $\Omega \subseteq \R^N$ \tempReg e $g \in C^\infty(\derp\Omega, \S^1) \tc \deg(g) =0$ se $N = 2$}
+	{$\forall p \geq 2 \quad \exists \ov{u} \in C^{1, \alpha}(\ov{\Omega})$ minimizzatore per $W_p(g)$}
+	\tdim
+\corc{$\forall p \geq 2 \quad W_p(g) = J_p(g) = C_p(g)$}
+	\edim
+
+\prpc{Dati $N\geq 2$, $\Omega \subseteq \R^N$ \tempReg e $g \in C^\infty(\derp\Omega, \S^1)$}
+	{$\bullet$ $\forall p \in (1, 2) \quad \forall X = W, J \quad \exists u^X_{p, g}$ minimizzatore per $X_p(g)$ \\
+	 $\bullet$ $\forall p \in (1, 2) \quad \exists u^C_{p, g}$ minimizzatore per $C_p(g)$ dato $\deg(g) =0$ se $N = 2$}
+	\tdim
+
+\prpc{Dati $N\geq 2$, $\Omega \subseteq \R^N$ \tempReg, $g \in C^\infty(\derp\Omega, \S^1)$ e $p \in (1, 2)$}
+	{$u^J_{p, g} = e^{i\varphi_J} \tc \varphi_j \in Sol\(\Delta_p \varphi = 0\)$}
+	\edim
+\corc{$u^J_{p, g} \in C^{1, \alpha}(\Omega, \S^1)$}{}
+	\edim
+
+\defc{Dati $\Omega \subseteq \R^N$ \tempReg e $u \in W^{1, p}(\Omega, \S^1)$}
+	{$\bullet$ $u$ mappa $p$-armonica $\quad$ se $\quad$ $u \in Sol\(\Delta_p u = |\nabla u|^p u\)$ \\
+	 $\bullet$ $u$ mappa $p$-armonica stazionaria $\qquad$ se $\quad$ $u$ $p$-armonica $\tc \forall \{\Phi_t\}_t \tc \Phi_0 = Id \quad \fraz{d}{dt}\Big|_{t = 0} \intg_\Omega |\nabla u \circ \Phi_t|^p = 0$}
+
+\prpc{Dati $N\geq 2$, $\Omega \subseteq \R^N$ \tempReg, $g \in C^\infty(\derp\Omega, \S^1)$ e $p \in (1, 2)$}
+	{$u^W_{p, g}$ mappa $p$-armonica stazionaria}
+	\edim 
+\corc{$\exists K \subset\subset \Omega$ compatto $\tc \mathcal{H}^{N-2}(K) < +\infty \tc u^W_{p, g} \in C^{1, \alpha}(\ov{\Omega} \dif K, \S^1)$}{}
+	\edim
+
+\lemc{Dati $N\geq 2$, $\Omega \subseteq \R^N$ \tempReg, $g \in C^\infty(\derp\Omega, \S^1)$ e $p \in (1, 2)$}
+	{$J_p(g) < C_p(g) \imp W_p(g) < J_p(g)$}
+	\tdim
+
+\teoc[Gaps]{Dati $N\geq 2$, $\Omega \subseteq \R^N$ \tempReg e $p \in (1, 2)$}
+	{$\exists g \in C^\infty(\derp\Omega, \S^1) \tc W_p(g) < J_p(g) < C_p(g) < +\infty$}
+	\edim
+	
 
 \end{document}
