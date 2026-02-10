@@ -2,7 +2,11 @@
 
 \input{../commonCommands}
 
-\title{\textbf{Introduction to Sphere - Valued Sobolev Maps}}
+\newcommand{\spd} {s.p.d. }
+\newcommand{\wrt} {w.r.t. }
+\newcommand{\st} {s.t. }
+
+\title{\textbf{Krylov Subspace Methods and Preconditioninggit }}
 \author{Ivan De Biasi}
 \date{}
 
@@ -13,6 +17,75 @@
 \pagestyle{plain}
 \tableofcontents
 \newpage
+
+\section{Classical methods}
+\subsection{Stationary methods}
+Given a non singular square matrix $A \in \R^{n\times n}$, a vector $b \in \R^n$ and a \textit{splitting} $A = B - C$ of $A$ the linear system 
+$$Ax = b$$ 
+is equivalent to the fixed-point problem
+$$x = B^{1}Cx + B^{-1}b.$$
+So, given an intial guess $x_0 \in \R^n$, the iterative method associated is given by the recursion
+$$x_{k+1} =  B^{1}Cx + B^{-1}b = T x + c$$
+where $T = B^{1}C$ and $c = B^{1}b$.
+It holds the following
+\prpc{$\|e_k\|_2 \convIn{k\to \infty} 0 \iff \rho(T) <1$}{}
+
+\subsection{Steepest descend (Gradient descend)}
+Given a linear system $Ax = b$, if $A$ is \spd the solution $x^*$ satisfies
+$$x^* = \argmin_{x \in \R^n} J(x) \qquad \text{where} \qquad J(x) = \frac{1}{2} x^\trasp A x - b^\trasp x.$$
+The recursion given by
+$$x_{k+1} = x_k + \alpha_k r_k \qquad \text{where} \qquad \alpha_k = \argmin_{\alpha \in \R} J(x_k + \alpha r_k) = \dots = \fraz{r_k^\trasp r_k}{r_k^\trasp Ar_k}$$
+satisfies the following 
+\teoc{$\forall k \quad \|e_k\|_A \leq \(\fraz{\kappa_2(A) - 1}{\kappa_2(A) + 1}\)^k\|e_0\|_A$}{}
+
+
+\section{Krylov methods}
+\subsection{Krylov space}
+\defc{Given a square matrix $A \in \K^{n\times n}$ and a vector $v \in \K^n$ the \textit{$m^{th}$ (polynomial) Krylov subspace} of $A$ and $v$ is}
+	{$$\mathcal{K}_m(A, v) = \vspan\{v, Av, \dots A^{m-1}v\}$$}
+	
+\defc{Given a square matrix $A \in \K^{n\times n}$ and a vector $v \in \K^n$ the \textit{minimal polynomial of $v$ \wrt $A$} is the monic polynomial $p$ with the lowest degree \st $p(A) = 0$. The degree $\deg_A(v)$ of such $p$ is called the \textit{grade of $v$ \wrt $A$}.}{}
+
+\phantom{.}\n\n
+The following statements holds
+\prpc{Given a square matrix $A \in \K^{n\times n}$, a vector $v \in \K^n$ and $\mu = \deg_A(v)$ the grade of $v$ \wrt $A$ the $\mu^{th}$ Krylov subspace $\mathcal{K}_\mu(A, v)$ is $A$-invariant.}{}
+
+\prpc{Given a square matrix $A \in \K^{n\times n}$ and a vector $v \in \K^n$, it holds 
+	$$\forall m \quad \dim \mathcal{K}_m(A, v) = m \iff \deg_A(v) \geq m.$$}{}
+\corc{$\forall m \quad \dim \mathcal{K}_m(A, v) = \min\{m, \deg_A(v)\}$.}{}
+
+\subsection{Krylov iterations}
+Given a linear system $Ax = b$ and an initial guess $x_0 \in \K^n$ any Krylov method search the $m^{th}$ approximate solution in the affine space 
+$$x_0 + \mathcal{K}_m(A, r_0) = \{x_0 + p_{m-1}(A)r_0 \mid p_{m-1} \in P^{m-1}\} = \{\(I_n + Ap_{m-1}(A)\)x_0 + p_{m-1}(A)b \mid p_{m-1} \in P^{m-1}\}$$
+which implies that the $m^{th}$ residual $r_m$ belongs to the space $r_0 + A\mathcal{K}_m(A, r_0)$.
+
+In the special case of $x_0 = 0$ this approach consist in approximate the solution $x^* = A^{-1}b$ by the the action of a $m-1$ degre polinomial in $A$ on the vector $b$, i.e. in approximate the inverse $A^-1$ with a polinomial in A.
+This is reasonable given the Cayley–Hamilton theorem and the following approximation theorems.
+
+\teoc[Weistrass approximation]{Fixed a compact interval $I \subseteq \R$, $\forall f \in C^0(I) \quad \exists \{p_m \in P^m\} \tc \|f - p_m\|_\infty \convIn{m\to \infty} 0$.}{}
+\teoc[Bernstein]{Fixed a compact interval $I \subseteq \R$, $\forall f$ analytic on an ellipse $\Omega \subseteq \C$ \st $\Omega \supset I$ $\quad$ $\exists \{p_m \in P^m\}$ and $\alpha >0 \tc \forall m \quad \|f - p_m\|_\infty < Ce^{-\alpha m}$.}{}
+
+\teoc{Given a \spd matrix $A$, the function $f(x) = x^{-1}$ is analytic on an ellipse $\Omega \subseteq \C$ \st $I_A = [\lambda_\min(A), \lambda_\max(A)] \subset \Omega$ and $0 \not \in \Omega$.}{}
+\corc{$\exists \{p_m \in \P_m\} \st \|A^{-1} - p_m(A)\|_\infty \convIn{} 0$ exponentially.}{}
+\corc{If $A = Q\Lambda Q^H$ then $\forall b \quad \|p_m(A)b - A^{-1}b\|_2 \leq C'e^{-\alpha m}\|b\|_2$.}{}
+%\dimc{$\forall b \quad 
+%	{\begin{array}{rl}{\|p_m(A)b - A^{-1}b\|_2 &\leq \|p_m(A) - A^{-1}\|_2\|b\|_2 \\
+%										&= \|p_m(A) - \Lambda^{-1}\|_2\|b\|_2 \\
+%										& = \(\mx_i\left|p_m(\lambda_i(A)) - \frac{1}{\lambda_i(A)}\right|\)\|b\|_2 \\
+%										& \leq \(\mx_{\lambda \in I_A}\left|p_m(\lambda) - \frac{1}{\lambda}\right|\)\|b\|_2 \\
+%										& \leq C'e^{-\alpha m}\|b\|_2\end{array}}$.}
+
+Since the $m^{th}$ is defined inside a $m$-dimensional subspace, at each step $m$ independent conditions are needed to have an unique solution. This is achieved by the following   
+
+\teoc[Saad]{Given linear system $Ax = b$, an initial guess $x_0$ and an $m$ \st $\dim\mathcal{K}_m(A, r_0) = m$, if \\
+	$\bullet$ (C) $\quad$ $A = A^H$ and $\mathcal{C}_m = \mathcal{K}_m(A, r_0)$ \\
+	or \\
+	$\bullet$ (M) $\quad$ $A$ is non singular and $\mathcal{C}_m = A\mathcal{K}_m(A, r_0)$ \\
+	then $\exists! x_m \in x_0 + \mathcal{K}_m(A, r_0) \st x_m \perp \mathcal{C_m}$. \\
+	Therefore this unique vector satisfies \\
+	$\|x_m - x^*\|_A = \min_{z \in x_0 + \mathcal{K}_m(A, r_0)} \|z - x^*\|_A = \min_{p \in \Pi_m} \|p(A)e_0\|_A$ in the (C) case, and \\
+	$\|b - Ax_m\|_2 = \min_{z \in x_0 + \mathcal{K}_m(A, r_0)} \|b - Az\|_2 = \min_{p \in \Pi_m} \|p(A)r_0\|_2$ in the (M) case.}{}
+
 
 
 \end{document}
